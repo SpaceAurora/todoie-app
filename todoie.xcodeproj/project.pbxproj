@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A2450B621C2E1600004E664 /* UITextFieldTodoie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2450B521C2E1600004E664 /* UITextFieldTodoie.swift */; };
 		8A72E26821C15F3D00553E97 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A72E26721C15F3D00553E97 /* AppConfiguration.swift */; };
 		8A72E26A21C1A4B600553E97 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A72E26921C1A4B600553E97 /* NetworkManager.swift */; };
 		8A72E26D21C1BD9500553E97 /* Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A72E26C21C1BD9500553E97 /* Operations.swift */; };
@@ -14,7 +15,7 @@
 		8A72E27121C1BF5400553E97 /* DecoderOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A72E27021C1BF5400553E97 /* DecoderOperation.swift */; };
 		8A72E27421C1C73D00553E97 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A72E27321C1C73D00553E97 /* Status.swift */; };
 		8A92D3AA21C037BE00D6B1B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A92D3A921C037BE00D6B1B4 /* AppDelegate.swift */; };
-		8A92D3AC21C037BE00D6B1B4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A92D3AB21C037BE00D6B1B4 /* ViewController.swift */; };
+		8A92D3AC21C037BE00D6B1B4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A92D3AB21C037BE00D6B1B4 /* LoginViewController.swift */; };
 		8A92D3B121C037BE00D6B1B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A92D3B021C037BE00D6B1B4 /* Assets.xcassets */; };
 		8A92D3B421C037BE00D6B1B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A92D3B221C037BE00D6B1B4 /* LaunchScreen.storyboard */; };
 		8A92D3BF21C037BE00D6B1B4 /* todoieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A92D3BE21C037BE00D6B1B4 /* todoieTests.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8A2450B521C2E1600004E664 /* UITextFieldTodoie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldTodoie.swift; sourceTree = "<group>"; };
 		8A72E26721C15F3D00553E97 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
 		8A72E26921C1A4B600553E97 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		8A72E26C21C1BD9500553E97 /* Operations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operations.swift; sourceTree = "<group>"; };
@@ -47,7 +49,7 @@
 		8A72E27321C1C73D00553E97 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		8A92D3A621C037BE00D6B1B4 /* todoie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = todoie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A92D3A921C037BE00D6B1B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8A92D3AB21C037BE00D6B1B4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8A92D3AB21C037BE00D6B1B4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8A92D3B021C037BE00D6B1B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A92D3B321C037BE00D6B1B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8A92D3B521C037BE00D6B1B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -84,6 +86,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A2450B421C2E1420004E664 /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				8A2450B521C2E1600004E664 /* UITextFieldTodoie.swift */,
+			);
+			path = UIComponents;
+			sourceTree = "<group>";
+		};
+		8A2450B721C2E9ED0004E664 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8A92D3AB21C037BE00D6B1B4 /* LoginViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		8A72E26B21C1BD8500553E97 /* Operations */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,10 +143,11 @@
 		8A92D3A821C037BE00D6B1B4 /* todoie */ = {
 			isa = PBXGroup;
 			children = (
+				8A2450B721C2E9ED0004E664 /* Controllers */,
+				8A2450B421C2E1420004E664 /* UIComponents */,
 				8A72E27221C1C73100553E97 /* Models */,
 				8A72E26B21C1BD8500553E97 /* Operations */,
 				8A92D3A921C037BE00D6B1B4 /* AppDelegate.swift */,
-				8A92D3AB21C037BE00D6B1B4 /* ViewController.swift */,
 				8A92D3B021C037BE00D6B1B4 /* Assets.xcassets */,
 				8A92D3B221C037BE00D6B1B4 /* LaunchScreen.storyboard */,
 				8A92D3B521C037BE00D6B1B4 /* Info.plist */,
@@ -288,7 +307,8 @@
 			files = (
 				8A72E26A21C1A4B600553E97 /* NetworkManager.swift in Sources */,
 				8A72E26821C15F3D00553E97 /* AppConfiguration.swift in Sources */,
-				8A92D3AC21C037BE00D6B1B4 /* ViewController.swift in Sources */,
+				8A92D3AC21C037BE00D6B1B4 /* LoginViewController.swift in Sources */,
+				8A2450B621C2E1600004E664 /* UITextFieldTodoie.swift in Sources */,
 				8A72E27421C1C73D00553E97 /* Status.swift in Sources */,
 				8A72E27121C1BF5400553E97 /* DecoderOperation.swift in Sources */,
 				8A92D3AA21C037BE00D6B1B4 /* AppDelegate.swift in Sources */,
