@@ -12,6 +12,7 @@ struct AppConfiguration {
     static let serverUrl: URL = {
         #if DEBUG
         let url = URL(string: "https://powerful-reaches-68877.herokuapp.com")!
+        print("Debug mode: \(url.absoluteString)")
         return url
         #else
         return URL(string: "https://powerful-reaches-68877.herokuapp.com")!
