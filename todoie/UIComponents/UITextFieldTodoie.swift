@@ -8,6 +8,9 @@
 
 import UIKit
 
+/**
+ UITextFieldTodoie implements the text field with the icon on the left side of the input field
+ */
 class UITextFieldTodoie: UITextField {
     
     // UIComponents
@@ -19,6 +22,12 @@ class UITextFieldTodoie: UITextField {
         return iv
     }()
     
+    /**
+     UITextFieldTodoie implements the text field with the icon on the left side of the input field
+     - Parameters:
+        - withImage: UIImage that will be placed in the icon
+        - placeholder: String that will represent the text in AttributtedPlaceholder
+    */
     init(withImage image: UIImage, placeholder: String) {
         imageView.image = image
         super.init(frame: .zero)
@@ -41,7 +50,9 @@ class UITextFieldTodoie: UITextField {
         textColor = .white
     }
     
-    // Creates the bottom only boarder for the UITextField that will work with AutoLayout
+    /**
+     Creates the bottom only boarder for the UITextField that will work with AutoLayout
+     */
     fileprivate func setupBoarder() {
         let lineView = UIView()
         lineView.backgroundColor = .white
@@ -57,7 +68,9 @@ class UITextFieldTodoie: UITextField {
             ])
     }
     
-    // Creates the image within the UITextField
+    /**
+     Creates the image within the UITextField
+     */
     fileprivate func setupImage() {
         
         // creates a container for the image
