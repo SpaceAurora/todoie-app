@@ -8,6 +8,13 @@
 
 import Foundation
 
+/**
+ DecoderOperation is a class that will be handling all the JSON decoding for us using operations,
+ since the application is based on operations.
+ 
+ It is of a generic type which makes decoding easier and better.
+ T: Type of class you want to decode
+ */
 class DecoderOperation<T: Decodable>: Procedure {
     
     // Get's an input from Anyother Operation to decode
@@ -15,7 +22,6 @@ class DecoderOperation<T: Decodable>: Procedure {
     var output: T?
     
     override init() {
-        
         super.init()
     }
     

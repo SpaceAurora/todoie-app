@@ -20,6 +20,8 @@
 		8A92D3B421C037BE00D6B1B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A92D3B221C037BE00D6B1B4 /* LaunchScreen.storyboard */; };
 		8A92D3BF21C037BE00D6B1B4 /* todoieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A92D3BE21C037BE00D6B1B4 /* todoieTests.swift */; };
 		8A92D3CA21C037BF00D6B1B4 /* todoieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A92D3C921C037BF00D6B1B4 /* todoieUITests.swift */; };
+		8A9B5F4021C50A0A008FDC07 /* UIButtonTodoie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B5F3F21C50A0A008FDC07 /* UIButtonTodoie.swift */; };
+		8A9B5F4321C50C40008FDC07 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B5F4221C50C40008FDC07 /* UIColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		8A92D3C521C037BE00D6B1B4 /* todoieUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = todoieUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A92D3C921C037BF00D6B1B4 /* todoieUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = todoieUITests.swift; sourceTree = "<group>"; };
 		8A92D3CB21C037BF00D6B1B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A9B5F3F21C50A0A008FDC07 /* UIButtonTodoie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonTodoie.swift; sourceTree = "<group>"; };
+		8A9B5F4221C50C40008FDC07 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				8A2450B521C2E1600004E664 /* UITextFieldTodoie.swift */,
+				8A9B5F3F21C50A0A008FDC07 /* UIButtonTodoie.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -143,6 +148,7 @@
 		8A92D3A821C037BE00D6B1B4 /* todoie */ = {
 			isa = PBXGroup;
 			children = (
+				8A9B5F4121C50C21008FDC07 /* UIKit-Extensions */,
 				8A2450B721C2E9ED0004E664 /* Controllers */,
 				8A2450B421C2E1420004E664 /* UIComponents */,
 				8A72E27221C1C73100553E97 /* Models */,
@@ -173,6 +179,14 @@
 				8A92D3CB21C037BF00D6B1B4 /* Info.plist */,
 			);
 			path = todoieUITests;
+			sourceTree = "<group>";
+		};
+		8A9B5F4121C50C21008FDC07 /* UIKit-Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8A9B5F4221C50C40008FDC07 /* UIColor.swift */,
+			);
+			path = "UIKit-Extensions";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,9 +322,11 @@
 				8A72E26A21C1A4B600553E97 /* NetworkManager.swift in Sources */,
 				8A72E26821C15F3D00553E97 /* AppConfiguration.swift in Sources */,
 				8A92D3AC21C037BE00D6B1B4 /* LoginViewController.swift in Sources */,
+				8A9B5F4021C50A0A008FDC07 /* UIButtonTodoie.swift in Sources */,
 				8A2450B621C2E1600004E664 /* UITextFieldTodoie.swift in Sources */,
 				8A72E27421C1C73D00553E97 /* Status.swift in Sources */,
 				8A72E27121C1BF5400553E97 /* DecoderOperation.swift in Sources */,
+				8A9B5F4321C50C40008FDC07 /* UIColor.swift in Sources */,
 				8A92D3AA21C037BE00D6B1B4 /* AppDelegate.swift in Sources */,
 				8A72E26F21C1BDBC00553E97 /* NetworkOperation.swift in Sources */,
 				8A72E26D21C1BD9500553E97 /* Operations.swift in Sources */,
