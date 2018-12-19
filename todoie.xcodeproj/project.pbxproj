@@ -22,7 +22,7 @@
 		8A92D3CA21C037BF00D6B1B4 /* todoieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A92D3C921C037BF00D6B1B4 /* todoieUITests.swift */; };
 		8A9B5F4021C50A0A008FDC07 /* UIButtonTodoie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B5F3F21C50A0A008FDC07 /* UIButtonTodoie.swift */; };
 		8A9B5F4321C50C40008FDC07 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B5F4221C50C40008FDC07 /* UIColor.swift */; };
-		8AE210D621CAC94200C65442 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AE210D521CAC94200C65442 /* GoogleService-Info.plist */; };
+		8AC1B5E021CAEB88000D1ADA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AC1B5DF21CAEB88000D1ADA /* GoogleService-Info.plist */; };
 		96442023462E3ADAED8E1196 /* Pods_todoie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D06E7CA7AE890824165B4A /* Pods_todoie.framework */; };
 		9DC575DDDFA3B101AA889EB2 /* Pods_todoieTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8102675F467A0DC5C2905CC5 /* Pods_todoieTests.framework */; };
 /* End PBXBuildFile section */
@@ -69,7 +69,7 @@
 		8A92D3CB21C037BF00D6B1B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A9B5F3F21C50A0A008FDC07 /* UIButtonTodoie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonTodoie.swift; sourceTree = "<group>"; };
 		8A9B5F4221C50C40008FDC07 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
-		8AE210D521CAC94200C65442 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8AC1B5DF21CAEB88000D1ADA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9058B9C6D66E6B37D3127F9A /* Pods-todoieTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-todoieTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-todoieTests/Pods-todoieTests.release.xcconfig"; sourceTree = "<group>"; };
 		98DF3642C4C2A33518B33ED7 /* Pods-todoieTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-todoieTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-todoieTests/Pods-todoieTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B1201E4F25C4FDF8B7E38A4A /* Pods-todoieUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-todoieUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-todoieUITests/Pods-todoieUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -167,7 +167,7 @@
 		8A92D3A821C037BE00D6B1B4 /* todoie */ = {
 			isa = PBXGroup;
 			children = (
-				8AE210D521CAC94200C65442 /* GoogleService-Info.plist */,
+				8AC1B5DF21CAEB88000D1ADA /* GoogleService-Info.plist */,
 				8A9B5F4121C50C21008FDC07 /* UIKit-Extensions */,
 				8A2450B721C2E9ED0004E664 /* Controllers */,
 				8A2450B421C2E1420004E664 /* UIComponents */,
@@ -331,7 +331,7 @@
 			files = (
 				8A92D3B421C037BE00D6B1B4 /* LaunchScreen.storyboard in Resources */,
 				8A92D3B121C037BE00D6B1B4 /* Assets.xcassets in Resources */,
-				8AE210D621CAC94200C65442 /* GoogleService-Info.plist in Resources */,
+				8AC1B5E021CAEB88000D1ADA /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
