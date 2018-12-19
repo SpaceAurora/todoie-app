@@ -142,13 +142,6 @@
 			path = Operations;
 			sourceTree = "<group>";
 		};
-		8A72E27221C1C73100553E97 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		8A92D39D21C037BE00D6B1B4 = {
 			isa = PBXGroup;
 			children = (
@@ -178,7 +171,6 @@
 				8A9B5F4121C50C21008FDC07 /* UIKit-Extensions */,
 				8A2450B721C2E9ED0004E664 /* Controllers */,
 				8A2450B421C2E1420004E664 /* UIComponents */,
-				8A72E27221C1C73100553E97 /* Models */,
 				8A72E26B21C1BD8500553E97 /* Operations */,
 				8A92D3A921C037BE00D6B1B4 /* AppDelegate.swift */,
 				8A92D3B021C037BE00D6B1B4 /* Assets.xcassets */,
