@@ -22,6 +22,10 @@ class UITextFieldTodoie: UITextField {
         return iv
     }()
     
+    override var intrinsicContentSize: CGSize {
+        return .init(width: 0, height: 50)
+    }
+    
     /**
      UITextFieldTodoie implements the text field with the icon on the left side of the input field
      - Parameters:

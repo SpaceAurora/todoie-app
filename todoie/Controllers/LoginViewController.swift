@@ -45,12 +45,10 @@ class LoginViewController: UIViewController {
             u.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             u.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
             u.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            u.heightAnchor.constraint(equalToConstant: 40),
             
             signInButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             signInButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
             signInButton.topAnchor.constraint(equalTo: u.bottomAnchor, constant: 20),
-            signInButton.heightAnchor.constraint(equalToConstant: 40)
             ])
     }
 

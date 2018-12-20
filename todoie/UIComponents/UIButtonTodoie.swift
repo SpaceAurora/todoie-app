@@ -13,6 +13,10 @@ import UIKit
  */
 class UIButtonTodoie: UIButton {
     
+    override var intrinsicContentSize: CGSize {
+        return .init(width: 0, height: 50)
+    }
+    
     /**
      Setup Button set the title and the button layout that's required
      - Parameters:
@@ -21,14 +25,14 @@ class UIButtonTodoie: UIButton {
     func setupButton(placeholder: String) {
         setTitleColor(.white, for: .normal)
         setTitle(placeholder, for: .normal)
-        setupButton()
-        translatesAutoresizingMaskIntoConstraints = false
+        setupView()
     }
     
     /*
      Sets up the boarder of the button and the color
      */
-    private func setupButton() {
+    private func setupView() {
+        translatesAutoresizingMaskIntoConstraints = false
         layer.backgroundColor = UIColor.hotPink.cgColor
         layer.cornerRadius = 20
     }
