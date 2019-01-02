@@ -14,12 +14,11 @@ import GoogleSignIn
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    var handle: AuthStateDidChangeListenerHandle?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
-        try? Auth.auth().signOut()
+        try? Auth.auth().signOut() // Should be removed after testing
         window = UIWindow()
         window?.makeKeyAndVisible()
         window?.rootViewController = HomeViewController()

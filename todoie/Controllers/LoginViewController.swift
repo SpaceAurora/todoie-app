@@ -50,10 +50,12 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController: GIDSignInUIDelegate {
     
+    // Sets up the ui delegate
     fileprivate func setupGoogleSignIn() {
         GIDSignIn.sharedInstance().uiDelegate = self
     }
     
+    // Calls the ViewModel googleSignIn function
     @objc fileprivate func handleGoogleSignIn() {
         loginViewModel.googleSignIn()
         setupHud(withText: "Sign up..")
@@ -76,7 +78,9 @@ extension LoginViewController {
 extension LoginViewController {
     
     func setupLoginViewModelObservers() {
-        loginViewModel.isUserLoggedIn.bind { (isLoggedIn) in
+        
+        // Binds the clousre with the object isUserLoggedIn
+        loginViewModel.isUserLoggedIn.bind { [unowned self] (isLoggedIn) in
             if isLoggedIn == true {
                 self.progressHud.dismiss()
                 self.dismiss(animated: true)
@@ -85,8 +89,11 @@ extension LoginViewController {
     }
 }
 
+//MARK:- UI Setup
+
 extension LoginViewController {
     
+    //Setup the View
     fileprivate func setupView() {
         view.addSubview(backgroundImage)
         view.addSubview(customGoogleSignInButton)
@@ -101,6 +108,6 @@ extension LoginViewController {
             customGoogleSignInButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
             customGoogleSignInButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             
-            ])
+        ])
     }
 }

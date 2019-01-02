@@ -21,6 +21,7 @@ class UIButtonTodoie: UIButton {
      Setup Button set the title and the button layout that's required
      - Parameters:
         - placeholder: String that will represent the text in button
+        - color: UIColor that will indicate the color of the button
      */
     func setupButton(placeholder: String, color: UIColor) {
         setTitleColor(.white, for: .normal)
@@ -28,8 +29,10 @@ class UIButtonTodoie: UIButton {
         setupView(color: color)
     }
     
-    /*
+    /**
      Sets up the boarder of the button and the color
+     - Parameters:
+        - color: UIColor that will indicate the color of the button
      */
     private func setupView(color: UIColor) {
         translatesAutoresizingMaskIntoConstraints = false
