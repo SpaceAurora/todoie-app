@@ -7,13 +7,18 @@
 //
 
 import UIKit
+import Firebase
+import GoogleSignIn
+import JGProgressHUD
 
 class LoginViewController: UIViewController {
     
-    // Consts
+    private let loginViewModel = LoginViewModel()
     
-    // Vars
-    
+    private let progressHud: JGProgressHUD = {
+        let hud = JGProgressHUD(style: .dark)
+        return hud
+    }()
     // UIComponents
     private let backgroundImage: UIImageView = {
         let iv = UIImageView(image: #imageLiteral(resourceName: "background"))
@@ -22,19 +27,69 @@ class LoginViewController: UIViewController {
         return iv
     }()
     
-    // with rendering mode will just render the original picture provided
-    private let u = UITextFieldTodoie(withImage: #imageLiteral(resourceName: "user").withRenderingMode(.alwaysOriginal), placeholder: "Username")
-    private let signInButton: UIButtonTodoie = {
+    // Sets up the Google sign up button
+    private let customGoogleSignInButton: UIButtonTodoie = {
         let b = UIButtonTodoie(type: .system)
-        b.setupButton(placeholder: "Sign In")
+        b.setupButton(placeholder: "Google", color: .hotPink)
+        b.addTarget(self, action: #selector(handleGoogleSignIn), for: .touchUpInside)
         return b
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.isNavigationBarHidden = true
+        setupGoogleSignIn()
+        setupLoginViewModelObservers()
+        setupView()
+    }
+    
+}
+
+
+//MARK:- Google Auth
+
+extension LoginViewController: GIDSignInUIDelegate {
+    
+    fileprivate func setupGoogleSignIn() {
+        GIDSignIn.sharedInstance().uiDelegate = self
+    }
+    
+    @objc fileprivate func handleGoogleSignIn() {
+        loginViewModel.googleSignIn()
+        setupHud(withText: "Sign up..")
+    }
+    
+}
+
+// MARK:- Hud Setup
+
+extension LoginViewController {
+    
+    func setupHud(withText text: String) {
+        progressHud.textLabel.text = text
+        progressHud.show(in: view)
+    }
+}
+
+//MARK:- Setup LoginViewModel
+
+extension LoginViewController {
+    
+    func setupLoginViewModelObservers() {
+        loginViewModel.isUserLoggedIn.bind { (isLoggedIn) in
+            if isLoggedIn == true {
+                self.progressHud.dismiss()
+                self.dismiss(animated: true)
+            }
+        }
+    }
+}
+
+extension LoginViewController {
+    
+    fileprivate func setupView() {
         view.addSubview(backgroundImage)
-        view.addSubview(u)
-        view.addSubview(signInButton)
+        view.addSubview(customGoogleSignInButton)
         NSLayoutConstraint.activate([
             
             backgroundImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -42,14 +97,10 @@ class LoginViewController: UIViewController {
             backgroundImage.topAnchor.constraint(equalTo: view.topAnchor),
             backgroundImage.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
-            u.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            u.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-            u.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            customGoogleSignInButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            customGoogleSignInButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            customGoogleSignInButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             
-            signInButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            signInButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-            signInButton.topAnchor.constraint(equalTo: u.bottomAnchor, constant: 20),
             ])
     }
-
 }

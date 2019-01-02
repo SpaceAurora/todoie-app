@@ -22,18 +22,18 @@ class UIButtonTodoie: UIButton {
      - Parameters:
         - placeholder: String that will represent the text in button
      */
-    func setupButton(placeholder: String) {
+    func setupButton(placeholder: String, color: UIColor) {
         setTitleColor(.white, for: .normal)
         setTitle(placeholder, for: .normal)
-        setupView()
+        setupView(color: color)
     }
     
     /*
      Sets up the boarder of the button and the color
      */
-    private func setupView() {
+    private func setupView(color: UIColor) {
         translatesAutoresizingMaskIntoConstraints = false
-        layer.backgroundColor = UIColor.hotPink.cgColor
+        layer.backgroundColor = color.cgColor
         layer.cornerRadius = 20
     }
     

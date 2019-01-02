@@ -11,6 +11,7 @@ target 'todoie' do
   pod 'Firebase/Firestore'
   pod 'FBSDKLoginKit'
   pod 'GoogleSignIn'
+  pod "JGProgressHUD"
   
   target 'todoieTests' do
     inherit! :search_paths
