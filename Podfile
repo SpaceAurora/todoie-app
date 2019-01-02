@@ -7,6 +7,10 @@ target 'todoie' do
 
   # Pods for todoie
   pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
+  pod 'FBSDKLoginKit'
+  pod 'GoogleSignIn'
   
   target 'todoieTests' do
     inherit! :search_paths
