@@ -26,7 +26,7 @@ class LoginViewModel: NSObject {
 extension LoginViewModel: GIDSignInDelegate {
     
     // Sets up the Google login required protocols and delegates to the ViewModel
-    func setupGoogleLogin() {
+    fileprivate func setupGoogleLogin() {
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
     }
