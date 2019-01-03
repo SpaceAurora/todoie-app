@@ -22,6 +22,7 @@ class UITextFieldTodoie: UITextField {
         return iv
     }()
     
+    // sets the default size of the textfield
     override var intrinsicContentSize: CGSize {
         return .init(width: 0, height: 50)
     }

@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FacebookCore
 import GoogleSignIn
 
 @UIApplicationMain
@@ -16,8 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        FirebaseApp.configure()
+        
+        // Setup firebase and facebook SDKs
+        setupSDKs(application, launchOptions: launchOptions)
         try? Auth.auth().signOut() // Should be removed after testing
         window = UIWindow()
         window?.makeKeyAndVisible()
@@ -27,9 +29,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any])
         -> Bool {
-            return GIDSignIn.sharedInstance().handle(url,
-                                                     sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
-                                                     annotation: [:])
+            print("with url: ",url.absoluteString)
+            
+            if url.scheme!.hasPrefix("fb\(SDKSettings.appId)"), url.host == "authorize" {
+                return SDKApplicationDelegate.shared.application(application, open: url, options: options)
+            } else {
+                return GIDSignIn.sharedInstance().handle(url,
+                                                         sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+                                                         annotation: [:])
+            }
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
@@ -54,5 +62,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
+}
+
+extension AppDelegate {
+    
+    fileprivate func setupSDKs(_ application: UIApplication, launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
+        SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+        FirebaseApp.configure()
+    }
 }
 

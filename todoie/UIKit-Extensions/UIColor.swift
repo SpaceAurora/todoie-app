@@ -17,6 +17,22 @@ extension UIColor {
         }
     }
     
+    // Implements the Facebook blue color
+    static var facebookBlue: UIColor {
+        get {
+            return .RGB(red: 74, green: 144, blue: 226)
+        }
+    }
+    
+    // Implements a opacity background
+    static var opacityBackground: UIColor {
+        get {
+            let color = UIColor(white: 1.0, alpha: 0.5)
+            
+            return color
+        }
+    }
+    
     /**
      RGB Helper method
      - Parameters:

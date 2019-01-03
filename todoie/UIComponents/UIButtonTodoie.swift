@@ -13,6 +13,7 @@ import UIKit
  */
 class UIButtonTodoie: UIButton {
     
+    // sets the default size of the buttons
     override var intrinsicContentSize: CGSize {
         return .init(width: 0, height: 50)
     }
@@ -23,8 +24,8 @@ class UIButtonTodoie: UIButton {
         - placeholder: String that will represent the text in button
         - color: UIColor that will indicate the color of the button
      */
-    func setupButton(placeholder: String, color: UIColor) {
-        setTitleColor(.white, for: .normal)
+    func setupButton(placeholder: String, color: UIColor, textColor: UIColor) {
+        setTitleColor(textColor, for: .normal)
         setTitle(placeholder, for: .normal)
         setupView(color: color)
     }
