@@ -30,6 +30,7 @@ class NetworkManager {
         Auth.auth().signInAndRetrieveData(with: credential) { (auth, error) in
             if let err = error {
                 print(err.localizedDescription)
+                completion(err)
                 return
             }
             self.saveUserToFireStore(authResult: auth, completion: completion)
