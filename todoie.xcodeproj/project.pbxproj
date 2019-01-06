@@ -22,6 +22,9 @@
 		8A92D3CA21C037BF00D6B1B4 /* todoieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A92D3C921C037BF00D6B1B4 /* todoieUITests.swift */; };
 		8A9B5F4021C50A0A008FDC07 /* UIButtonTodoie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B5F3F21C50A0A008FDC07 /* UIButtonTodoie.swift */; };
 		8A9B5F4321C50C40008FDC07 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B5F4221C50C40008FDC07 /* UIColor.swift */; };
+		8AA20B9F21DD385B0088EBE6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA20B9E21DD385B0088EBE6 /* HomeViewController.swift */; };
+		8AB1878421DD55BD008324A9 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB1878321DD55BD008324A9 /* Bindable.swift */; };
+		8AB1878621DD55CA008324A9 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB1878521DD55CA008324A9 /* LoginViewModel.swift */; };
 		8AC1B5E021CAEB88000D1ADA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AC1B5DF21CAEB88000D1ADA /* GoogleService-Info.plist */; };
 		96442023462E3ADAED8E1196 /* Pods_todoie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D06E7CA7AE890824165B4A /* Pods_todoie.framework */; };
 		9DC575DDDFA3B101AA889EB2 /* Pods_todoieTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8102675F467A0DC5C2905CC5 /* Pods_todoieTests.framework */; };
@@ -69,6 +72,9 @@
 		8A92D3CB21C037BF00D6B1B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A9B5F3F21C50A0A008FDC07 /* UIButtonTodoie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonTodoie.swift; sourceTree = "<group>"; };
 		8A9B5F4221C50C40008FDC07 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		8AA20B9E21DD385B0088EBE6 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		8AB1878321DD55BD008324A9 /* Bindable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
+		8AB1878521DD55CA008324A9 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		8AC1B5DF21CAEB88000D1ADA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9058B9C6D66E6B37D3127F9A /* Pods-todoieTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-todoieTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-todoieTests/Pods-todoieTests.release.xcconfig"; sourceTree = "<group>"; };
 		98DF3642C4C2A33518B33ED7 /* Pods-todoieTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-todoieTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-todoieTests/Pods-todoieTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -128,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				8A92D3AB21C037BE00D6B1B4 /* LoginViewController.swift */,
+				8AA20B9E21DD385B0088EBE6 /* HomeViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -167,6 +174,7 @@
 		8A92D3A821C037BE00D6B1B4 /* todoie */ = {
 			isa = PBXGroup;
 			children = (
+				8AB1878221DD558D008324A9 /* ViewModel */,
 				8AC1B5DF21CAEB88000D1ADA /* GoogleService-Info.plist */,
 				8A9B5F4121C50C21008FDC07 /* UIKit-Extensions */,
 				8A2450B721C2E9ED0004E664 /* Controllers */,
@@ -177,6 +185,7 @@
 				8A92D3B221C037BE00D6B1B4 /* LaunchScreen.storyboard */,
 				8A92D3B521C037BE00D6B1B4 /* Info.plist */,
 				8A72E26721C15F3D00553E97 /* AppConfiguration.swift */,
+				8AB1878321DD55BD008324A9 /* Bindable.swift */,
 				8A72E26921C1A4B600553E97 /* NetworkManager.swift */,
 			);
 			path = todoie;
@@ -206,6 +215,14 @@
 				8A9B5F4221C50C40008FDC07 /* UIColor.swift */,
 			);
 			path = "UIKit-Extensions";
+			sourceTree = "<group>";
+		};
+		8AB1878221DD558D008324A9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8AB1878521DD55CA008324A9 /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		FC20AB4BFA542906AB16E7ED /* Pods */ = {
@@ -369,6 +386,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
@@ -386,6 +404,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
@@ -496,14 +515,17 @@
 			files = (
 				8A72E26A21C1A4B600553E97 /* NetworkManager.swift in Sources */,
 				8A72E26821C15F3D00553E97 /* AppConfiguration.swift in Sources */,
+				8AB1878421DD55BD008324A9 /* Bindable.swift in Sources */,
 				8A92D3AC21C037BE00D6B1B4 /* LoginViewController.swift in Sources */,
 				8A9B5F4021C50A0A008FDC07 /* UIButtonTodoie.swift in Sources */,
 				8A2450B621C2E1600004E664 /* UITextFieldTodoie.swift in Sources */,
 				8A72E27121C1BF5400553E97 /* DecoderOperation.swift in Sources */,
 				8A9B5F4321C50C40008FDC07 /* UIColor.swift in Sources */,
+				8AB1878621DD55CA008324A9 /* LoginViewModel.swift in Sources */,
 				8A92D3AA21C037BE00D6B1B4 /* AppDelegate.swift in Sources */,
 				8A72E26F21C1BDBC00553E97 /* NetworkOperation.swift in Sources */,
 				8A72E26D21C1BD9500553E97 /* Operations.swift in Sources */,
+				8AA20B9F21DD385B0088EBE6 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
