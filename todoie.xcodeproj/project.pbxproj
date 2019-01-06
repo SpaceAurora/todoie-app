@@ -26,6 +26,7 @@
 		8AB1878421DD55BD008324A9 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB1878321DD55BD008324A9 /* Bindable.swift */; };
 		8AB1878621DD55CA008324A9 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB1878521DD55CA008324A9 /* LoginViewModel.swift */; };
 		8AC1B5E021CAEB88000D1ADA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AC1B5DF21CAEB88000D1ADA /* GoogleService-Info.plist */; };
+		8ADE2E1821DE4E9300F1AD90 /* TodoieUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADE2E1721DE4E9300F1AD90 /* TodoieUser.swift */; };
 		96442023462E3ADAED8E1196 /* Pods_todoie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D06E7CA7AE890824165B4A /* Pods_todoie.framework */; };
 		9DC575DDDFA3B101AA889EB2 /* Pods_todoieTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8102675F467A0DC5C2905CC5 /* Pods_todoieTests.framework */; };
 /* End PBXBuildFile section */
@@ -52,6 +53,7 @@
 		2229257832905B9A73E2B718 /* Pods-todoieUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-todoieUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-todoieUITests/Pods-todoieUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		46D06E7CA7AE890824165B4A /* Pods_todoie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_todoie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8102675F467A0DC5C2905CC5 /* Pods_todoieTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_todoieTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A0A7F5921DE121600A2C22F /* todoie.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = todoie.entitlements; sourceTree = "<group>"; };
 		8A2450B521C2E1600004E664 /* UITextFieldTodoie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldTodoie.swift; sourceTree = "<group>"; };
 		8A72E26721C15F3D00553E97 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
 		8A72E26921C1A4B600553E97 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 		8AB1878321DD55BD008324A9 /* Bindable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
 		8AB1878521DD55CA008324A9 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		8AC1B5DF21CAEB88000D1ADA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8ADE2E1721DE4E9300F1AD90 /* TodoieUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoieUser.swift; sourceTree = "<group>"; };
 		9058B9C6D66E6B37D3127F9A /* Pods-todoieTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-todoieTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-todoieTests/Pods-todoieTests.release.xcconfig"; sourceTree = "<group>"; };
 		98DF3642C4C2A33518B33ED7 /* Pods-todoieTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-todoieTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-todoieTests/Pods-todoieTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B1201E4F25C4FDF8B7E38A4A /* Pods-todoieUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-todoieUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-todoieUITests/Pods-todoieUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -174,6 +177,8 @@
 		8A92D3A821C037BE00D6B1B4 /* todoie */ = {
 			isa = PBXGroup;
 			children = (
+				8ADE2E1621DE4E8200F1AD90 /* Models */,
+				8A0A7F5921DE121600A2C22F /* todoie.entitlements */,
 				8AB1878221DD558D008324A9 /* ViewModel */,
 				8AC1B5DF21CAEB88000D1ADA /* GoogleService-Info.plist */,
 				8A9B5F4121C50C21008FDC07 /* UIKit-Extensions */,
@@ -223,6 +228,14 @@
 				8AB1878521DD55CA008324A9 /* LoginViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8ADE2E1621DE4E8200F1AD90 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8ADE2E1721DE4E9300F1AD90 /* TodoieUser.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		FC20AB4BFA542906AB16E7ED /* Pods */ = {
@@ -311,6 +324,11 @@
 				TargetAttributes = {
 					8A92D3A521C037BE00D6B1B4 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					8A92D3B921C037BE00D6B1B4 = {
 						CreatedOnToolsVersion = 10.1;
@@ -383,6 +401,8 @@
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
@@ -401,6 +421,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
@@ -521,6 +543,7 @@
 				8A2450B621C2E1600004E664 /* UITextFieldTodoie.swift in Sources */,
 				8A72E27121C1BF5400553E97 /* DecoderOperation.swift in Sources */,
 				8A9B5F4321C50C40008FDC07 /* UIColor.swift in Sources */,
+				8ADE2E1821DE4E9300F1AD90 /* TodoieUser.swift in Sources */,
 				8AB1878621DD55CA008324A9 /* LoginViewModel.swift in Sources */,
 				8A92D3AA21C037BE00D6B1B4 /* AppDelegate.swift in Sources */,
 				8A72E26F21C1BDBC00553E97 /* NetworkOperation.swift in Sources */,
@@ -627,6 +650,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -681,6 +705,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -693,6 +718,7 @@
 			baseConfigurationReference = 1C1F723362FB87C744BDFB3A /* Pods-todoie.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = todoie/todoie.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8QAD36SMXZ;
 				INFOPLIST_FILE = todoie/Info.plist;
@@ -703,7 +729,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = space.aurora.todoie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -712,6 +738,7 @@
 			baseConfigurationReference = D0902C9E19462D0F269EC637 /* Pods-todoie.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = todoie/todoie.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8QAD36SMXZ;
 				INFOPLIST_FILE = todoie/Info.plist;
@@ -722,7 +749,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = space.aurora.todoie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

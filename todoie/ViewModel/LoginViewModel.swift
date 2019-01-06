@@ -9,14 +9,16 @@
 import Foundation
 import Firebase
 import GoogleSignIn
+import FacebookLogin
+import FacebookCore
 
 class LoginViewModel: NSObject {
     
-    var isUserLoggedIn = Bindable<Bool>()
+    var isUserLoggedIn = Bindable<(Bool,Error?)>()
     
     override init() {
         super.init()
-        isUserLoggedIn.value = false
+        isUserLoggedIn.value = (false, nil)
         setupGoogleLogin()
     }
 }
@@ -49,13 +51,47 @@ extension LoginViewModel: GIDSignInDelegate {
         NetworkManager.shared.generateGoogleUserCredentials(user: user) { (error) in
             if let err = error {
                 print(err.localizedDescription)
-                self.isUserLoggedIn.value = false
+                self.isUserLoggedIn.value = (false, err)
                 return
             }
             // sets the isUserLoggedIn to true to notify the VC that this is done
-            self.isUserLoggedIn.value = true
+            self.isUserLoggedIn.value = (true, nil)
         }
     }
     
 }
 
+//MARK:- Facebook Sign Up/log in implementation
+
+extension LoginViewModel {
+    
+    /**
+     facebook signin implementes the code needed to sign up and log in with facebook
+     - Parameters:
+        - viewController: Takes in the viewController the facebook button is in so it pushes the sign up page on it.
+     */
+    func facebookSignIn(viewController: UIViewController) {
+        let loginManager = LoginManager()
+        loginManager.logIn(readPermissions: [.publicProfile, .email], viewController: viewController) { (loginResult) in
+            switch loginResult {
+            case .failed(let error):
+                self.isUserLoggedIn.value = (false, error)
+            case .cancelled:
+                self.isUserLoggedIn.value = (false, nil)
+            case .success(_, _, let accessToken):
+                self.handleCreatingFirebaseUser(accessToken: accessToken)
+            }
+        }
+    }
+    
+    // Removed code from the facebookSignIn to ease reading
+    fileprivate func handleCreatingFirebaseUser(accessToken: AccessToken) {
+        NetworkManager.shared.generateFacebookUserCredentials(accessToken:  accessToken, completion: { (error) in
+            if let err = error {
+                print(err.localizedDescription)
+                return
+            }
+            self.isUserLoggedIn.value = (true, nil)
+        })
+    }
+}

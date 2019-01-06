@@ -9,7 +9,10 @@ target 'todoie' do
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
-  pod 'FBSDKLoginKit'
+  pod 'FBSDKCoreKit', '~> 4.38.0'
+  pod 'FBSDKLoginKit', '~> 4.38.0'
+  pod 'FacebookCore'
+  pod 'FacebookLogin'
   pod 'GoogleSignIn'
   pod "JGProgressHUD"
   
