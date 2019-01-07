@@ -26,7 +26,7 @@ class UIButtonTodoie: UIButton {
      */
     func setupButton(placeholder: String, color: UIColor, textColor: UIColor) {
         setTitleColor(textColor, for: .normal)
-        setTitle(placeholder, for: .normal)
+        setTitle("Sign Up With \(placeholder)", for: .normal)
         setupView(color: color)
     }
     

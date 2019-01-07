@@ -29,6 +29,52 @@ class LoginViewController: UIViewController {
         return iv
     }()
     
+    private let logoImage: UIImageViewTodoie = {
+        let iv = UIImageViewTodoie(image: #imageLiteral(resourceName: "Logo"))
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        iv.clipsToBounds = true
+        return iv
+    }()
+    
+    private let continueLable: UILabelTodoieLogin = {
+        let lb = UILabelTodoieLogin(frame: .zero)
+        lb.text = "Continue With"
+        return lb
+    }()
+    
+    private let orLabel: UILabelTodoieLogin = {
+        let lb = UILabelTodoieLogin(frame: .zero)
+        lb.text = "OR"
+        return lb
+    }()
+    
+    lazy var seperatorView: UIView = {
+        let s = UIView()
+        let right = LoginSeparatorUIView()
+        let left = LoginSeparatorUIView()
+        s.translatesAutoresizingMaskIntoConstraints = false
+        s.addSubview(left)
+        s.addSubview(orLabel)
+        s.addSubview(right)
+        
+        NSLayoutConstraint.activate([
+            orLabel.centerXAnchor.constraint(equalTo: s.centerXAnchor),
+            orLabel.centerYAnchor.constraint(equalTo: s.centerYAnchor),
+            
+            left.trailingAnchor.constraint(equalTo: orLabel.leadingAnchor, constant: -8),
+            left.leadingAnchor.constraint(equalTo: s.leadingAnchor),
+            left.centerYAnchor.constraint(equalTo: s.centerYAnchor),
+            
+            right.leadingAnchor.constraint(equalTo: orLabel.trailingAnchor, constant: 8),
+            right.trailingAnchor.constraint(equalTo: s.trailingAnchor),
+            right.centerYAnchor.constraint(equalTo: s.centerYAnchor),
+            
+            s.heightAnchor.constraint(equalToConstant: 30),
+            
+            ])
+        return s
+    }()
+    
     private let customGoogleSignInButton: UIButtonTodoie = {
         let b = UIButtonTodoie(type: .system)
         b.setupButton(placeholder: "Google", color: .opacityBackground, textColor: .hotPink)
@@ -130,8 +176,9 @@ extension LoginViewController {
     //Setup the View
     fileprivate func setupView() {
         view.addSubview(backgroundImage)
-
-        let stackView = UIStackView(arrangedSubviews: [customGoogleSignInButton, customFacebookSignInButton])
+        view.addSubview(logoImage)
+        let stackView = UIStackView(arrangedSubviews: [continueLable, customGoogleSignInButton, seperatorView, customFacebookSignInButton])
+        
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.spacing = 8
@@ -146,8 +193,10 @@ extension LoginViewController {
             
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -70),
             
+            logoImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            logoImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
             ])
     }
     
