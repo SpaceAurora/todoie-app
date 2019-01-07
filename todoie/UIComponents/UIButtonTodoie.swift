@@ -38,7 +38,7 @@ class UIButtonTodoie: UIButton {
     private func setupView(color: UIColor) {
         translatesAutoresizingMaskIntoConstraints = false
         layer.backgroundColor = color.cgColor
-        layer.cornerRadius = 20
+        layer.cornerRadius = 25
     }
     
 }

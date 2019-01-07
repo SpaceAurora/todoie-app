@@ -41,40 +41,7 @@ class LoginViewController: UIViewController {
         lb.text = "Continue With"
         return lb
     }()
-    
-    private let orLabel: UILabelTodoieLogin = {
-        let lb = UILabelTodoieLogin(frame: .zero)
-        lb.text = "OR"
-        return lb
-    }()
-    
-    lazy var seperatorView: UIView = {
-        let s = UIView()
-        let right = LoginSeparatorUIView()
-        let left = LoginSeparatorUIView()
-        s.translatesAutoresizingMaskIntoConstraints = false
-        s.addSubview(left)
-        s.addSubview(orLabel)
-        s.addSubview(right)
-        
-        NSLayoutConstraint.activate([
-            orLabel.centerXAnchor.constraint(equalTo: s.centerXAnchor),
-            orLabel.centerYAnchor.constraint(equalTo: s.centerYAnchor),
             
-            left.trailingAnchor.constraint(equalTo: orLabel.leadingAnchor, constant: -8),
-            left.leadingAnchor.constraint(equalTo: s.leadingAnchor),
-            left.centerYAnchor.constraint(equalTo: s.centerYAnchor),
-            
-            right.leadingAnchor.constraint(equalTo: orLabel.trailingAnchor, constant: 8),
-            right.trailingAnchor.constraint(equalTo: s.trailingAnchor),
-            right.centerYAnchor.constraint(equalTo: s.centerYAnchor),
-            
-            s.heightAnchor.constraint(equalToConstant: 30),
-            
-            ])
-        return s
-    }()
-    
     private let customGoogleSignInButton: UIButtonTodoie = {
         let b = UIButtonTodoie(type: .system)
         b.setupButton(placeholder: "Google", color: .opacityBackground, textColor: .hotPink)
@@ -177,7 +144,7 @@ extension LoginViewController {
     fileprivate func setupView() {
         view.addSubview(backgroundImage)
         view.addSubview(logoImage)
-        let stackView = UIStackView(arrangedSubviews: [continueLable, customGoogleSignInButton, seperatorView, customFacebookSignInButton])
+        let stackView = UIStackView(arrangedSubviews: [continueLable, customGoogleSignInButton, LoginSeparatorUIView(), customFacebookSignInButton])
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
