@@ -9,12 +9,14 @@ target 'todoie' do
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
+  pod 'Firebase/Storage'
   pod 'FBSDKCoreKit', '~> 4.38.0'
   pod 'FBSDKLoginKit', '~> 4.38.0'
   pod 'FacebookCore'
   pod 'FacebookLogin'
   pod 'GoogleSignIn'
   pod "JGProgressHUD"
+  pod "SDWebImage"
   
   target 'todoieTests' do
     inherit! :search_paths

@@ -29,8 +29,8 @@ class LoginViewController: UIViewController {
         return iv
     }()
     
-    private let logoImage: UIImageViewTodoie = {
-        let iv = UIImageViewTodoie(image: #imageLiteral(resourceName: "Logo"))
+    private let logoImage: UIImageView = {
+        let iv = UIImageView(image: #imageLiteral(resourceName: "Logo"))
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.clipsToBounds = true
         return iv
@@ -164,6 +164,8 @@ extension LoginViewController {
             
             logoImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logoImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
+            logoImage.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
+            logoImage.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3),
             ])
     }
     
