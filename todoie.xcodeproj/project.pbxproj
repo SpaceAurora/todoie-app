@@ -23,6 +23,9 @@
 		8A9B5F4021C50A0A008FDC07 /* UIButtonTodoie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B5F3F21C50A0A008FDC07 /* UIButtonTodoie.swift */; };
 		8A9B5F4321C50C40008FDC07 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B5F4221C50C40008FDC07 /* UIColor.swift */; };
 		8AA20B9F21DD385B0088EBE6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA20B9E21DD385B0088EBE6 /* HomeViewController.swift */; };
+		8AA721FD21E36E86003A6E86 /* UIImageViewTodoie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA721FC21E36E86003A6E86 /* UIImageViewTodoie.swift */; };
+		8AA7220121E37212003A6E86 /* LoginSeperetorUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA7220021E37212003A6E86 /* LoginSeperetorUIView.swift */; };
+		8AA7220521E376A9003A6E86 /* UILabelTodoieLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA7220421E376A9003A6E86 /* UILabelTodoieLogin.swift */; };
 		8AB1878421DD55BD008324A9 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB1878321DD55BD008324A9 /* Bindable.swift */; };
 		8AB1878621DD55CA008324A9 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB1878521DD55CA008324A9 /* LoginViewModel.swift */; };
 		8AC1B5E021CAEB88000D1ADA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AC1B5DF21CAEB88000D1ADA /* GoogleService-Info.plist */; };
@@ -75,6 +78,9 @@
 		8A9B5F3F21C50A0A008FDC07 /* UIButtonTodoie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonTodoie.swift; sourceTree = "<group>"; };
 		8A9B5F4221C50C40008FDC07 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		8AA20B9E21DD385B0088EBE6 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		8AA721FC21E36E86003A6E86 /* UIImageViewTodoie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewTodoie.swift; sourceTree = "<group>"; };
+		8AA7220021E37212003A6E86 /* LoginSeperetorUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSeperetorUIView.swift; sourceTree = "<group>"; };
+		8AA7220421E376A9003A6E86 /* UILabelTodoieLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelTodoieLogin.swift; sourceTree = "<group>"; };
 		8AB1878321DD55BD008324A9 /* Bindable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
 		8AB1878521DD55CA008324A9 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		8AC1B5DF21CAEB88000D1ADA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -129,6 +135,9 @@
 			children = (
 				8A2450B521C2E1600004E664 /* UITextFieldTodoie.swift */,
 				8A9B5F3F21C50A0A008FDC07 /* UIButtonTodoie.swift */,
+				8AA721FC21E36E86003A6E86 /* UIImageViewTodoie.swift */,
+				8AA7220021E37212003A6E86 /* LoginSeperetorUIView.swift */,
+				8AA7220421E376A9003A6E86 /* UILabelTodoieLogin.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -535,6 +544,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AA7220121E37212003A6E86 /* LoginSeperetorUIView.swift in Sources */,
 				8A72E26A21C1A4B600553E97 /* NetworkManager.swift in Sources */,
 				8A72E26821C15F3D00553E97 /* AppConfiguration.swift in Sources */,
 				8AB1878421DD55BD008324A9 /* Bindable.swift in Sources */,
@@ -546,6 +556,8 @@
 				8ADE2E1821DE4E9300F1AD90 /* TodoieUser.swift in Sources */,
 				8AB1878621DD55CA008324A9 /* LoginViewModel.swift in Sources */,
 				8A92D3AA21C037BE00D6B1B4 /* AppDelegate.swift in Sources */,
+				8AA721FD21E36E86003A6E86 /* UIImageViewTodoie.swift in Sources */,
+				8AA7220521E376A9003A6E86 /* UILabelTodoieLogin.swift in Sources */,
 				8A72E26F21C1BDBC00553E97 /* NetworkOperation.swift in Sources */,
 				8A72E26D21C1BD9500553E97 /* Operations.swift in Sources */,
 				8AA20B9F21DD385B0088EBE6 /* HomeViewController.swift in Sources */,

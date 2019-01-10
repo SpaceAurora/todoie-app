@@ -26,7 +26,7 @@ class UIButtonTodoie: UIButton {
      */
     func setupButton(placeholder: String, color: UIColor, textColor: UIColor) {
         setTitleColor(textColor, for: .normal)
-        setTitle(placeholder, for: .normal)
+        setTitle("Sign Up With \(placeholder)", for: .normal)
         setupView(color: color)
     }
     
@@ -38,7 +38,7 @@ class UIButtonTodoie: UIButton {
     private func setupView(color: UIColor) {
         translatesAutoresizingMaskIntoConstraints = false
         layer.backgroundColor = color.cgColor
-        layer.cornerRadius = 20
+        layer.cornerRadius = 25
     }
     
 }
