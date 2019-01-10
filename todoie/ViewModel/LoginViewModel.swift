@@ -42,8 +42,8 @@ extension LoginViewModel: GIDSignInDelegate {
     // Google's magic Happens behind the scences and then this function recives all the magic
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         
-        if let error = error {
-            // TODO:- handle errors
+        if let err = error {
+            self.isUserLoggedIn.value = (false, err)
             return
         }
         
