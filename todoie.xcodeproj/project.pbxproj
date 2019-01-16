@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		308FA4199B3856606F0B0791 /* Pods_todoieUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF5205751988BC0C9DEA3CE0 /* Pods_todoieUITests.framework */; };
 		8A2450B621C2E1600004E664 /* UITextFieldTodoie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2450B521C2E1600004E664 /* UITextFieldTodoie.swift */; };
+		8A32AD6621ED199400E0BDEE /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A32AD6521ED199400E0BDEE /* LineView.swift */; };
+		8A32AD6921ED1D0B00E0BDEE /* HeaderViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A32AD6821ED1D0B00E0BDEE /* HeaderViewProtocol.swift */; };
 		8A72E26821C15F3D00553E97 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A72E26721C15F3D00553E97 /* AppConfiguration.swift */; };
 		8A72E26A21C1A4B600553E97 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A72E26921C1A4B600553E97 /* NetworkManager.swift */; };
 		8A72E26D21C1BD9500553E97 /* Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A72E26C21C1BD9500553E97 /* Operations.swift */; };
@@ -23,12 +25,17 @@
 		8A9B5F4021C50A0A008FDC07 /* UIButtonTodoie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B5F3F21C50A0A008FDC07 /* UIButtonTodoie.swift */; };
 		8A9B5F4321C50C40008FDC07 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B5F4221C50C40008FDC07 /* UIColor.swift */; };
 		8AA20B9F21DD385B0088EBE6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA20B9E21DD385B0088EBE6 /* HomeViewController.swift */; };
-		8AA721FD21E36E86003A6E86 /* UIImageViewTodoie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA721FC21E36E86003A6E86 /* UIImageViewTodoie.swift */; };
 		8AA7220121E37212003A6E86 /* LoginSeperetorUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA7220021E37212003A6E86 /* LoginSeperetorUIView.swift */; };
 		8AA7220521E376A9003A6E86 /* UILabelTodoieLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA7220421E376A9003A6E86 /* UILabelTodoieLogin.swift */; };
 		8AB1878421DD55BD008324A9 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB1878321DD55BD008324A9 /* Bindable.swift */; };
 		8AB1878621DD55CA008324A9 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB1878521DD55CA008324A9 /* LoginViewModel.swift */; };
 		8AC1B5E021CAEB88000D1ADA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AC1B5DF21CAEB88000D1ADA /* GoogleService-Info.plist */; };
+		8AD78F2221ED5A4100A096AA /* TaskViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD78F2121ED5A4100A096AA /* TaskViewModels.swift */; };
+		8AD78F2621ED5DF300A096AA /* HomeViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD78F2521ED5DF300A096AA /* HomeViewViewModel.swift */; };
+		8AD78F2821EDE53C00A096AA /* ProfileImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD78F2721EDE53C00A096AA /* ProfileImageButton.swift */; };
+		8ADB53B721ECE24300991DB5 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADB53B621ECE24300991DB5 /* Todo.swift */; };
+		8ADB53B921ECE26400991DB5 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADB53B821ECE26400991DB5 /* BaseTableViewController.swift */; };
+		8ADB53BC21ECE29B00991DB5 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADB53BB21ECE29B00991DB5 /* HeaderView.swift */; };
 		8ADE2E1821DE4E9300F1AD90 /* TodoieUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADE2E1721DE4E9300F1AD90 /* TodoieUser.swift */; };
 		96442023462E3ADAED8E1196 /* Pods_todoie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D06E7CA7AE890824165B4A /* Pods_todoie.framework */; };
 		9DC575DDDFA3B101AA889EB2 /* Pods_todoieTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8102675F467A0DC5C2905CC5 /* Pods_todoieTests.framework */; };
@@ -58,6 +65,8 @@
 		8102675F467A0DC5C2905CC5 /* Pods_todoieTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_todoieTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A0A7F5921DE121600A2C22F /* todoie.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = todoie.entitlements; sourceTree = "<group>"; };
 		8A2450B521C2E1600004E664 /* UITextFieldTodoie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldTodoie.swift; sourceTree = "<group>"; };
+		8A32AD6521ED199400E0BDEE /* LineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
+		8A32AD6821ED1D0B00E0BDEE /* HeaderViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewProtocol.swift; sourceTree = "<group>"; };
 		8A72E26721C15F3D00553E97 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
 		8A72E26921C1A4B600553E97 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		8A72E26C21C1BD9500553E97 /* Operations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operations.swift; sourceTree = "<group>"; };
@@ -78,12 +87,17 @@
 		8A9B5F3F21C50A0A008FDC07 /* UIButtonTodoie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonTodoie.swift; sourceTree = "<group>"; };
 		8A9B5F4221C50C40008FDC07 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		8AA20B9E21DD385B0088EBE6 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		8AA721FC21E36E86003A6E86 /* UIImageViewTodoie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewTodoie.swift; sourceTree = "<group>"; };
 		8AA7220021E37212003A6E86 /* LoginSeperetorUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSeperetorUIView.swift; sourceTree = "<group>"; };
 		8AA7220421E376A9003A6E86 /* UILabelTodoieLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelTodoieLogin.swift; sourceTree = "<group>"; };
 		8AB1878321DD55BD008324A9 /* Bindable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
 		8AB1878521DD55CA008324A9 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		8AC1B5DF21CAEB88000D1ADA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8AD78F2121ED5A4100A096AA /* TaskViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModels.swift; sourceTree = "<group>"; };
+		8AD78F2521ED5DF300A096AA /* HomeViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewViewModel.swift; sourceTree = "<group>"; };
+		8AD78F2721EDE53C00A096AA /* ProfileImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageButton.swift; sourceTree = "<group>"; };
+		8ADB53B621ECE24300991DB5 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
+		8ADB53B821ECE26400991DB5 /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
+		8ADB53BB21ECE29B00991DB5 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		8ADE2E1721DE4E9300F1AD90 /* TodoieUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoieUser.swift; sourceTree = "<group>"; };
 		9058B9C6D66E6B37D3127F9A /* Pods-todoieTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-todoieTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-todoieTests/Pods-todoieTests.release.xcconfig"; sourceTree = "<group>"; };
 		98DF3642C4C2A33518B33ED7 /* Pods-todoieTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-todoieTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-todoieTests/Pods-todoieTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -133,11 +147,12 @@
 		8A2450B421C2E1420004E664 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				8A32AD6521ED199400E0BDEE /* LineView.swift */,
 				8A2450B521C2E1600004E664 /* UITextFieldTodoie.swift */,
 				8A9B5F3F21C50A0A008FDC07 /* UIButtonTodoie.swift */,
-				8AA721FC21E36E86003A6E86 /* UIImageViewTodoie.swift */,
 				8AA7220021E37212003A6E86 /* LoginSeperetorUIView.swift */,
 				8AA7220421E376A9003A6E86 /* UILabelTodoieLogin.swift */,
+				8AD78F2721EDE53C00A096AA /* ProfileImageButton.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -147,8 +162,17 @@
 			children = (
 				8A92D3AB21C037BE00D6B1B4 /* LoginViewController.swift */,
 				8AA20B9E21DD385B0088EBE6 /* HomeViewController.swift */,
+				8ADB53B821ECE26400991DB5 /* BaseTableViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		8A32AD6721ED1CF400E0BDEE /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				8A32AD6821ED1D0B00E0BDEE /* HeaderViewProtocol.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		8A72E26B21C1BD8500553E97 /* Operations */ = {
@@ -186,6 +210,8 @@
 		8A92D3A821C037BE00D6B1B4 /* todoie */ = {
 			isa = PBXGroup;
 			children = (
+				8A32AD6721ED1CF400E0BDEE /* Protocols */,
+				8ADB53BA21ECE28D00991DB5 /* View */,
 				8ADE2E1621DE4E8200F1AD90 /* Models */,
 				8A0A7F5921DE121600A2C22F /* todoie.entitlements */,
 				8AB1878221DD558D008324A9 /* ViewModel */,
@@ -235,14 +261,25 @@
 			isa = PBXGroup;
 			children = (
 				8AB1878521DD55CA008324A9 /* LoginViewModel.swift */,
+				8AD78F2121ED5A4100A096AA /* TaskViewModels.swift */,
+				8AD78F2521ED5DF300A096AA /* HomeViewViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8ADB53BA21ECE28D00991DB5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8ADB53BB21ECE29B00991DB5 /* HeaderView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		8ADE2E1621DE4E8200F1AD90 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				8ADE2E1721DE4E9300F1AD90 /* TodoieUser.swift */,
+				8ADB53B621ECE24300991DB5 /* Todo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -417,6 +454,7 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -437,6 +475,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -549,17 +588,24 @@
 				8A72E26821C15F3D00553E97 /* AppConfiguration.swift in Sources */,
 				8AB1878421DD55BD008324A9 /* Bindable.swift in Sources */,
 				8A92D3AC21C037BE00D6B1B4 /* LoginViewController.swift in Sources */,
+				8A32AD6621ED199400E0BDEE /* LineView.swift in Sources */,
 				8A9B5F4021C50A0A008FDC07 /* UIButtonTodoie.swift in Sources */,
 				8A2450B621C2E1600004E664 /* UITextFieldTodoie.swift in Sources */,
 				8A72E27121C1BF5400553E97 /* DecoderOperation.swift in Sources */,
+				8A32AD6921ED1D0B00E0BDEE /* HeaderViewProtocol.swift in Sources */,
+				8ADB53B921ECE26400991DB5 /* BaseTableViewController.swift in Sources */,
+				8AD78F2821EDE53C00A096AA /* ProfileImageButton.swift in Sources */,
 				8A9B5F4321C50C40008FDC07 /* UIColor.swift in Sources */,
+				8AD78F2221ED5A4100A096AA /* TaskViewModels.swift in Sources */,
 				8ADE2E1821DE4E9300F1AD90 /* TodoieUser.swift in Sources */,
 				8AB1878621DD55CA008324A9 /* LoginViewModel.swift in Sources */,
 				8A92D3AA21C037BE00D6B1B4 /* AppDelegate.swift in Sources */,
-				8AA721FD21E36E86003A6E86 /* UIImageViewTodoie.swift in Sources */,
+				8ADB53B721ECE24300991DB5 /* Todo.swift in Sources */,
+				8ADB53BC21ECE29B00991DB5 /* HeaderView.swift in Sources */,
 				8AA7220521E376A9003A6E86 /* UILabelTodoieLogin.swift in Sources */,
 				8A72E26F21C1BDBC00553E97 /* NetworkOperation.swift in Sources */,
 				8A72E26D21C1BD9500553E97 /* Operations.swift in Sources */,
+				8AD78F2621ED5DF300A096AA /* HomeViewViewModel.swift in Sources */,
 				8AA20B9F21DD385B0088EBE6 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,6 +12,11 @@ import FBSDKCoreKit
 import FacebookCore
 import Firebase
 
+// Enum to save all the collections names
+fileprivate enum FirebaseCalls: String {
+    case Users
+}
+
 /**
  Network Manager is a class that will be holding all the calls and returning NetworkOperations
  */
@@ -70,10 +75,11 @@ extension NetworkManager {
             "lastName": user.lastName,
             "email": user.email,
             "uid": uid,
+            "profileImageURL": user.imageURL,
             "timestamp": Int(Date().timeIntervalSince1970)
             ] as [String: Any]
         
-        db.collection("Users").document(uid).setData(document) { (error) in
+        db.collection(FirebaseCalls.Users.rawValue).document(uid).setData(document) { (error) in
             if let err = error {
                 print(err.localizedDescription)
                 completion(err)
@@ -96,4 +102,25 @@ extension NetworkManager {
         })
     }
     
+}
+
+//MARK:- User Networking calls
+
+extension NetworkManager {
+    
+    // fetchs the current user from firestore
+    func fetchUser(completion: @escaping (TodoieUser?, Error?) -> ()) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let database = Firestore.firestore().collection(FirebaseCalls.Users.rawValue)
+        database.document(uid).getDocument { (document, error) in
+            if let err = error {
+                print(err.localizedDescription)
+                completion(nil, error)
+                return
+            }
+            
+            guard let user = document?.data() as? [String: Any] else { return }
+            completion(TodoieUser(firestore: user), nil)
+        }
+    }
 }

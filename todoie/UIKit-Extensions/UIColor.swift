@@ -24,6 +24,18 @@ extension UIColor {
         }
     }
     
+    static var backgroundColor: UIColor {
+        get {
+            return .white
+        }
+    }
+    
+    static var lineColor: UIColor {
+        get {
+            return .RGB(red: 216, green: 216, blue: 216, alpha: 100)
+        }
+    }
+    
     // Implements a opacity background
     static var opacityBackground: UIColor {
         get {

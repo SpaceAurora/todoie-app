@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Setup firebase and facebook SDKs
         setupSDKs(application, launchOptions: launchOptions)
-        try? Auth.auth().signOut() // Should be removed after testing
+        
         window = UIWindow()
         window?.makeKeyAndVisible()
         window?.rootViewController = HomeViewController()
