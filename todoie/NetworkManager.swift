@@ -11,10 +11,11 @@ import GoogleSignIn
 import FBSDKCoreKit
 import FacebookCore
 import Firebase
+import SDWebImage
 
 // Enum to save all the collections names
-fileprivate enum FirebaseCalls: String {
-    case Users
+enum FirebaseCalls: String {
+    case Users, ProfileImages, Tasks, UserTasks
 }
 
 /**
@@ -22,8 +23,14 @@ fileprivate enum FirebaseCalls: String {
  */
 class NetworkManager {
     
-    static let shared = NetworkManager()
+    // Operations queue with 5 max concurrent operations
+    private let operationQueue: OperationQueue = {
+        let q = OperationQueue()
+        q.maxConcurrentOperationCount = 5
+        return q
+    }()
     
+    static let shared = NetworkManager()
 }
 
 //MARK:- Requests that create users belong here
@@ -31,75 +38,58 @@ class NetworkManager {
 extension NetworkManager {
     
     // Should generate the google credentials that came back from the google one click button
-    func generateGoogleUserCredentials(user: GIDGoogleUser, completion: @escaping (Error?) -> ()) {
+    func generateGoogleUserCredentials(user: GIDGoogleUser, completion: @escaping (Bool, Error?) -> ()) {
         guard let authentication = user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                        accessToken: authentication.accessToken)
-        
+        // starts the login operations process
         signInRetrieveData(user: TodoieUser(googleUser: user), credential: credential, completion: completion)
     }
     
-    func generateFacebookUserCredentials(accessToken: AccessToken, completion: @escaping (Error?) -> ()) {
-        
+    func generateFacebookUserCredentials(accessToken: AccessToken, completion: @escaping (Bool, Error?) -> ()) {
         let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.authenticationToken)
-        getFacebookUserInformation { (user, error) in
+        let facebookOperation = FetchUserFacebookDataOperation()
+        
+        // Facebook fetch operation
+        facebookOperation.didFinishFetch = { [unowned self] (user, error) in
             if let err = error {
-                print(err.localizedDescription)
-                completion(err)
+                completion(false, err)
                 return
             }
             guard let user = user else { return }
+            // starts the login operations process
             self.signInRetrieveData(user: user, credential: credential, completion: completion)
         }
-    }
-    
-    // Takes in the credentials and then adds it to the Auth Database
-    fileprivate func signInRetrieveData(user: TodoieUser, credential: AuthCredential, completion: @escaping (Error?) -> ()) {
-        Auth.auth().signInAndRetrieveData(with: credential) { (auth, error) in
-            if let err = error {
-                print(err.localizedDescription)
-                completion(err)
-                return
-            }
-            self.saveUserToFireStore(user: user, authResult: auth, completion: completion)
-        }
-    }
-    
-    // Saves the user by his UID in firestore
-    fileprivate func saveUserToFireStore(user: TodoieUser, authResult: AuthDataResult?, completion: @escaping (Error?) -> ()){
-        guard let uid = authResult?.user.uid else { return }
-        let db = Firestore.firestore()
         
-        let document = [
-            "firstName": user.firstName,
-            "lastName": user.lastName,
-            "email": user.email,
-            "uid": uid,
-            "profileImageURL": user.imageURL,
-            "timestamp": Int(Date().timeIntervalSince1970)
-            ] as [String: Any]
-        
-        db.collection(FirebaseCalls.Users.rawValue).document(uid).setData(document) { (error) in
-            if let err = error {
-                print(err.localizedDescription)
-                completion(err)
-                return
-            }
-            completion(nil)
-        }
+        operationQueue.addOperation(facebookOperation)
     }
     
-    fileprivate func getFacebookUserInformation(completion: @escaping (TodoieUser?, Error?) -> ()) {
-        FBSDKGraphRequest.init(graphPath: "me", parameters: ["fields" : "email, first_name, last_name"])?.start(completionHandler: { (sdkConnection, result, error) in
-            if let err = error {
-                print(err.localizedDescription)
-                completion(nil, err)
-                return
-            }
-            guard let user = result as? [String: Any] else { return }
-            
-            completion(TodoieUser(facebookUser: user), nil)
-        })
+    // Takes in the credentials and sets up the operations required to fire the Auth process
+    fileprivate func signInRetrieveData(user: TodoieUser, credential: AuthCredential, completion: @escaping (Bool, Error?) -> ()) {
+        
+        guard let url = URL(string: user.imageURL) else {
+            completion(false, nil)
+            return
+        }
+        
+        // DataWrappers
+        let authWrapper = DataWrapper<Bool>()
+        let imgWrapper = DataWrapper<UIImage>()
+        let urlWrapper = DataWrapper<String>()
+        
+        // init all the operations needed
+        let authOperation = networkAuthOperation(credential: credential, authWrapper: authWrapper, completion: completion)
+        let downloadOperation =  networkDownloadImageOperation(url: url, imageWrapper: imgWrapper, completion: nil)
+        let uploadOperation = UploadImageOperation(authWrapper: authWrapper, imageWrapper: imgWrapper, urlWrapper: urlWrapper)
+        let saveOperation = networkSaveUserOperation(user: user, urlWrapper: urlWrapper, completion: completion)
+        
+        // adding dependencies
+        uploadOperation.addDependency(downloadOperation)
+        uploadOperation.addDependency(authOperation)
+        saveOperation.addDependency(uploadOperation)
+        
+        // queueing up the operations
+        operationQueue.addOperations([authOperation, downloadOperation, uploadOperation, saveOperation], waitUntilFinished: false)
     }
     
 }
@@ -108,19 +98,120 @@ extension NetworkManager {
 
 extension NetworkManager {
     
-    // fetchs the current user from firestore
+    func fetchHomeViewData(userCompletion: @escaping (TodoieUser?, Error?) -> (), taskCompletion: @escaping ([Todo], Error?) -> ()) {
+        let fetchUser = networkFetchUserOperation(path: FirebaseCalls.Users.rawValue, completion: userCompletion)
+        let fetchTasks = networkFetchUserTasksOperation(path: FirebaseCalls.Tasks.rawValue, completion: taskCompletion)
+        fetchTasks.addDependency(fetchUser)
+        operationQueue.addOperations([fetchUser, fetchTasks], waitUntilFinished: false)
+    }
+    
+    // fetches the current user from firestore
     func fetchUser(completion: @escaping (TodoieUser?, Error?) -> ()) {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        let database = Firestore.firestore().collection(FirebaseCalls.Users.rawValue)
-        database.document(uid).getDocument { (document, error) in
+        let fetchOperation = networkFetchUserOperation(path: FirebaseCalls.Users.rawValue, completion: completion)
+        operationQueue.addOperation(fetchOperation)
+    }
+    
+    /**
+     Prepares the Fetching operation
+     - Parameters:
+         - url: Url of the image to be fetched
+         - completion: The completion clousre that should be invoked at the end of the call
+     */
+    func fetchProfileImage(url: URL, completion: @escaping (UIImage?, Error?) -> ()) {
+        let imageWrapper = DataWrapper<UIImage>()
+        let downloadOperation = networkDownloadImageOperation(url: url, imageWrapper: imageWrapper, completion: completion)
+        operationQueue.addOperation(downloadOperation)
+    }
+    
+    func fetchTasks(completion: @escaping ([Todo], Error?) -> Void) {
+        let operation = networkFetchUserTasksOperation(path: FirebaseCalls.Tasks.rawValue, completion: completion)
+        operationQueue.addOperation(operation)
+    }
+}
+
+//MARK:- operations
+
+extension NetworkManager {
+    
+    /**
+     Prepares the Fetching operation
+     - Parameters:
+         - credential: Firebase generated credentials
+         - authWrapper: DataWrapper object that links Auth operation with any following operation
+         - completion: The completion clousre that should be invoked at the end of the call
+     - returns: AuthOperation
+     */
+    fileprivate func networkAuthOperation(credential: AuthCredential, authWrapper: DataWrapper<Bool>, completion: @escaping (Bool, Error?) -> ()) -> AuthOperation {
+        let authOperation = AuthOperation(credential: credential, authWrapper: authWrapper)
+        authOperation.didAuthenticateUser = { [unowned self] (_, error) in
             if let err = error {
-                print(err.localizedDescription)
-                completion(nil, error)
+                completion(false, err)
+                self.operationQueue.cancelAllOperations()
                 return
             }
-            
-            guard let user = document?.data() as? [String: Any] else { return }
-            completion(TodoieUser(firestore: user), nil)
         }
+        return authOperation
     }
+    
+    /**
+     Prepares the Fetching operation
+     - Parameters:
+        - user: TodoieUser
+        - urlWrapper: DataWrapper object that links saving user with the upload operation
+        - completion: The completion clousre that should be invoked at the end of the call
+     - returns: SaveUserOperation
+     */
+    fileprivate func networkSaveUserOperation(user: TodoieUser, urlWrapper: DataWrapper<String>, completion: @escaping (Bool, Error?) -> ()) -> SaveUserOperation {
+        let saveOperation = SaveUserOperation(user: user, urlWrapper: urlWrapper)
+        saveOperation.didSaveUserInformation = { [unowned self] (loggedIn, error) in
+            if let err = error {
+                completion(loggedIn, err)
+                self.operationQueue.cancelAllOperations()
+                return
+            }
+            completion(loggedIn, nil)
+        }
+        return saveOperation
+    }
+    
+    /**
+     Prepares the Fetching operation
+     - Parameters:
+        - path: The path of the users in firestore
+        - completion: The completion clousre that should be invoked at the end of the call
+     - returns: FetchOperation
+     */
+    fileprivate func networkFetchUserOperation(path: String, completion: @escaping (TodoieUser?, Error?) -> ()) -> FetchUserOperation {
+        let fetchOperation = FetchUserOperation(path: path)
+        fetchOperation.didFinishFetch = { (user, error) in
+            completion(user, error)
+        }
+        return fetchOperation
+    }
+    
+    /**
+     Prepares the Fetching operation
+     - Parameters:
+     - url: Url of the image to be fetched
+     - urlWrapper: DataWrapper object that links saving user with the upload operation
+     - completion: The completion clousre that should be invoked at the end of the call
+     */
+    fileprivate func networkDownloadImageOperation(url: URL, imageWrapper: DataWrapper<UIImage>, completion: ((UIImage?, Error?) -> ())?) -> DownloadImagesOperation {
+        let downloadOperation = DownloadImagesOperation(url: url, data: imageWrapper)
+        downloadOperation.didDownloadUserImage = { (image, error) in
+            
+            // if completion is nil ignore
+            completion?(image, error)
+        }
+        return downloadOperation
+    }
+    
+    fileprivate func networkFetchUserTasksOperation(path: String, completion: @escaping ([Todo], Error?) -> ()) -> FetchTaskOperation {
+        let fetchOperation = FetchTaskOperation(path: path)
+        fetchOperation.didFinishFetch = { (todos, error) in
+            completion(todos, error)
+        }
+        return fetchOperation
+    }
+    
 }

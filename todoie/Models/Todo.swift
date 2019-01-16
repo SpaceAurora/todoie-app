@@ -10,4 +10,9 @@ import Foundation
 
 struct Todo {
     //TODO: Implement the todo model
+    let task: String
+    
+    init(document: [String: Any]) {
+        task = document["task"] as? String ?? ""
+    }
 }
