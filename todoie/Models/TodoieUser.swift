@@ -7,13 +7,16 @@
 //
 
 import Foundation
+import Firebase
 import GoogleSignIn
 
-struct TodoieUser {
+class TodoieUser: SaveOperationProtocol {
+    
     let firstName: String
     let lastName: String
     let email: String
     let imageURL: String
+    var uid: String?
     
     // Todoie user
     init(firestore: [String: Any]) {
@@ -21,6 +24,7 @@ struct TodoieUser {
         lastName = firestore["lastName"]  as? String ?? ""
         email = firestore["email"]  as? String ?? ""
         imageURL = firestore["profileImageURL"] as? String ?? ""
+        uid = firestore["uid"] as? String ?? ""
     }
     
     // User from facebook
@@ -29,6 +33,7 @@ struct TodoieUser {
         lastName = facebookUser["last_name"]  as? String ?? ""
         email = facebookUser["email"]  as? String ?? ""
         imageURL = TodoieUser.getImageURLForFacebookUsers(id: facebookUser["id"] as? String ?? "")
+        uid = nil
     }
     
     // User from google
@@ -37,6 +42,7 @@ struct TodoieUser {
         lastName = googleUser.profile.familyName
         email = googleUser.profile.email
         imageURL = TodoieUser.getImageURLFromGoogleUser(googleUser)
+        uid = nil
     }
     
     // Prepares the image according to facebook's url
@@ -53,5 +59,21 @@ struct TodoieUser {
         let picUrl = googleUser.profile.imageURL(withDimension: dimension)
         guard let url = picUrl?.absoluteString else { return "" }
         return url
+    }
+    
+    func getDocument() -> [String : Any] {
+        return ["":""]
+    }
+    
+    func getDocument(withUID id: String, withUrl url: String?) -> [String: Any] {
+        uid = id
+        return [
+            "firstName": firstName,
+            "lastName": lastName,
+            "email": email,
+            "uid": uid ?? "",
+            "profileImageURL": url ?? "",
+            "timestamp": Int(Date().timeIntervalSince1970)
+        ]
     }
 }

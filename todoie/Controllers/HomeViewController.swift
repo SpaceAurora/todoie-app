@@ -20,9 +20,14 @@ class HomeViewController: UIViewController {
     // UIComponents
     // passing self as a delegate to get notified when the user presses the buttons
     fileprivate lazy var header = HeaderView(delegate: self)
-    
+    fileprivate let spinner: UIActivityIndicatorView = {
+        let s = UIActivityIndicatorView(style: .gray)
+        s.translatesAutoresizingMaskIntoConstraints = false
+        s.hidesWhenStopped = true
+        return s
+    }()
     // Creating a tableview that takes a TaskViewModel as the dataArray and a Cell that implements A taskViewModel
-    fileprivate let tableView = BaseTableViewController<TaskViewModel, GenericCell<TaskViewModel>>()
+    fileprivate lazy var tableView = TasksCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout(), delegate: self)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,11 +37,13 @@ class HomeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("user: ", Auth.auth().currentUser)
+        print("user: ", Auth.auth().currentUser?.uid ?? "couldn't find user")
+        
         if Auth.auth().currentUser == nil {
             present(LoginViewController(), animated: true)
         } else {
             // fetches the HomeVC data
+            spinner.startAnimating()
             homeVM.fetchHomeViewData()
         }
     }
@@ -62,9 +69,18 @@ extension HomeViewController {
     
     // makes sure the data is not nil
     func passData(tasksArray: [TaskViewModel]?) {
+        spinner.stopAnimating()
         guard let tasks = tasksArray else { return }
         tableView.dataArray = tasks
     }
+}
+
+extension HomeViewController: TasksCollectionViewControllerDelegate {
+    
+    func prefetchElements(indexPaths: [IndexPath]) {
+        homeVM.prefetchingTasks(indexPaths: indexPaths)
+    }
+    
 }
 
 //MARK:- Header view confirming protocol
@@ -94,9 +110,16 @@ extension HomeViewController {
         addChild(tableView)
         // takes the view of the BaseTableViewController so we can add it as a subview
         let tableVCView = tableView.view!
+        let line = LineView()
         
-        view.addSubview(header)
-        view.addSubview(tableVCView)
+        // insert views
+        view.addSubview(line)
+        view.addSubview(spinner)
+        view.insertSubview(header, aboveSubview: line)
+        view.insertSubview(tableVCView, aboveSubview: line)
+        line.setupView(leadingAnchor: view.leadingAnchor)
+        
+        view.backgroundColor = .white
         
         NSLayoutConstraint.activate([
             header.topAnchor.constraint(equalTo: view.topAnchor),
@@ -108,8 +131,13 @@ extension HomeViewController {
             tableVCView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableVCView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableVCView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            spinner.centerXAnchor.constraint(equalTo: tableVCView.centerXAnchor),
+            spinner.centerYAnchor.constraint(equalTo: tableVCView.centerYAnchor),
+            
+            line.topAnchor.constraint(equalTo: view.topAnchor),
+            line.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             ])
     }
-    
 }
 

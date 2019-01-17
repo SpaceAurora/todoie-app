@@ -39,9 +39,31 @@ extension UIColor {
     // Implements a opacity background
     static var opacityBackground: UIColor {
         get {
-            let color = UIColor(white: 1.0, alpha: 0.5)
-            
-            return color
+            return UIColor(white: 1.0, alpha: 0.5)
+        }
+    }
+    
+    static var mainScreenTitles: UIColor {
+        get {
+            return .RGB(red: 74, green: 74, blue: 74)
+        }
+    }
+    
+    static var lowPriority: UIColor {
+        get {
+            return .RGB(red: 74, green: 144, blue: 226)
+        }
+    }
+    
+    static var medPriority: UIColor {
+        get {
+            return .RGB(red: 248, green: 231, blue: 28)
+        }
+    }
+    
+    static var highPriority: UIColor {
+        get {
+            return .RGB(red: 208, green: 2, blue: 27)
         }
     }
     
