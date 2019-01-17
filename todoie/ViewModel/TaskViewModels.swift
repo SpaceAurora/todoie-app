@@ -10,4 +10,6 @@ import UIKit
 
 class TaskViewModel {
     //TODO: Implement the task view model
+    init(task: Todo) {
+    }
 }

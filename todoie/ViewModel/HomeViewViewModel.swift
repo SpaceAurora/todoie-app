@@ -20,18 +20,52 @@ class HomeViewViewModel {
      */
     func fetchUser() {
         NetworkManager.shared.fetchUser { [unowned self] (todoieUser, error) in
-            if let err = error {
-                print(err.localizedDescription)
-                return
+            DispatchQueue.main.async {
+                if let err = error {
+                    print(err.localizedDescription)
+                    return
+                }
+                self.user.value = todoieUser
             }
-            self.user.value = todoieUser
         }
     }
     
     /**
      This function fetchs the data from firestore and returns a TaskViewModel.
      */
-    func fetchTasks() {
-        //TODO: implement fetching the tasks from firestore
+    func fetchHomeViewData() {
+        NetworkManager.shared.fetchHomeViewData(userCompletion: { (user, error) in
+            DispatchQueue.main.async {
+                self.handleFetchedUser(user: user, error: error)
+            }
+        }) { (todos, error) in
+            DispatchQueue.main.async {
+                self.handleFetchedTasks(todos: todos, error: error)
+            }
+        }
+    }
+    
+    // Invokes the user bindable after checking for errors
+    fileprivate func handleFetchedUser(user: TodoieUser?, error: Error?) {
+        if let err = error {
+            print(err.localizedDescription)
+            return
+        }
+        self.user.value = user
+    }
+    
+    // Invokes the dataArray bindable after checking for errors
+    fileprivate func handleFetchedTasks(todos: [Todo], error: Error?) {
+        if let err = error {
+            print(err.localizedDescription)
+            return
+        }
+        
+        // Converting the todos to a TaskViewModel
+        let taskViewModel = todos.map({ (todo) -> TaskViewModel in
+            return TaskViewModel(task: todo)
+        })
+        
+        self.dataArray.value = taskViewModel
     }
 }

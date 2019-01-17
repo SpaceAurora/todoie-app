@@ -48,14 +48,15 @@ extension LoginViewModel: GIDSignInDelegate {
         }
         
         // Network manager should generate the google user Credentials and saves them
-        NetworkManager.shared.generateGoogleUserCredentials(user: user) { (error) in
-            if let err = error {
-                print(err.localizedDescription)
-                self.isUserLoggedIn.value = (false, err)
-                return
+        NetworkManager.shared.generateGoogleUserCredentials(user: user) { (signup, error) in
+            DispatchQueue.main.async {
+                if let err = error {
+                    self.isUserLoggedIn.value = (signup, err)
+                    return
+                }
+                // sets the isUserLoggedIn to true to notify the VC that this is done
+                self.isUserLoggedIn.value = (signup, nil)
             }
-            // sets the isUserLoggedIn to true to notify the VC that this is done
-            self.isUserLoggedIn.value = (true, nil)
         }
     }
     
@@ -86,12 +87,14 @@ extension LoginViewModel {
     
     // Removed code from the facebookSignIn to ease reading
     fileprivate func handleCreatingFirebaseUser(accessToken: AccessToken) {
-        NetworkManager.shared.generateFacebookUserCredentials(accessToken:  accessToken, completion: { (error) in
-            if let err = error {
-                print(err.localizedDescription)
-                return
+        NetworkManager.shared.generateFacebookUserCredentials(accessToken:  accessToken, completion: { (signup, error) in
+            DispatchQueue.main.async {
+                if let err = error {
+                    self.isUserLoggedIn.value = (signup, err)
+                    return
+                }
+                self.isUserLoggedIn.value = (signup, nil)
             }
-            self.isUserLoggedIn.value = (true, nil)
         })
     }
 }

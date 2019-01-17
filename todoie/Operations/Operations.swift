@@ -13,6 +13,7 @@ class Procedure: Operation {
     private var _isExecuting = false
     private var _isAsync = false
     private var _isFinished = false
+    private var _isCancelled = false
     
     override var isAsynchronous: Bool {
         get {
@@ -44,6 +45,17 @@ class Procedure: Operation {
             willChangeValue(forKey: "isFinished")
             _isFinished = newValue
             didChangeValue(forKey: "isFinished")
+        }
+    }
+    
+    override var isCancelled: Bool {
+        get {
+            return _isCancelled
+        }
+        set {
+            willChangeValue(forKey: "isCancelled")
+            _isCancelled = newValue
+            didChangeValue(forKey: "isCancelled")
         }
     }
     

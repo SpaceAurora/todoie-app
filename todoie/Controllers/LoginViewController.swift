@@ -14,6 +14,7 @@ import JGProgressHUD
 
 class LoginViewController: UIViewController {
     
+    // constants
     private let loginViewModel = LoginViewModel()
     
     // UIComponents

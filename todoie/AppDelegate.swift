@@ -20,7 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Setup firebase and facebook SDKs
         setupSDKs(application, launchOptions: launchOptions)
-        
         window = UIWindow()
         window?.makeKeyAndVisible()
         window?.rootViewController = HomeViewController()
@@ -29,7 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any])
         -> Bool {
-            print("with url: ",url.absoluteString)
             
             if url.scheme!.hasPrefix("fb\(SDKSettings.appId)"), url.host == "authorize" {
                 return SDKApplicationDelegate.shared.application(application, open: url, options: options)

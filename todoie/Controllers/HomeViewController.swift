@@ -11,9 +11,13 @@ import Firebase
 
 class HomeViewController: UIViewController {
     
-    fileprivate var user: TodoieUser?
+    // constants
     fileprivate let homeVM = HomeViewViewModel()
     
+    // vars
+    fileprivate var user: TodoieUser?
+    
+    // UIComponents
     // passing self as a delegate to get notified when the user presses the buttons
     fileprivate lazy var header = HeaderView(delegate: self)
     
@@ -32,8 +36,8 @@ class HomeViewController: UIViewController {
         if Auth.auth().currentUser == nil {
             present(LoginViewController(), animated: true)
         } else {
-            // fetches the user
-            homeVM.fetchUser()
+            // fetches the HomeVC data
+            homeVM.fetchHomeViewData()
         }
     }
 }

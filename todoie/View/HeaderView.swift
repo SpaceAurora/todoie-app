@@ -11,8 +11,10 @@ import SDWebImage
 
 class HeaderView: UIView {
     
+    // vars
     private weak var delegate: HeaderViewProtocol?
     
+    // UIComponents
     private var path: UIBezierPath!
     private let shapeLayer = CAShapeLayer()
     private let line: LineView = LineView()
@@ -28,6 +30,7 @@ class HeaderView: UIView {
     private lazy var profileImage: ProfileImageButton = {
         let b = ProfileImageButton(type: .system)
         b.setupButton()
+        b.setImage(#imageLiteral(resourceName: "UserDefault").withRenderingMode(.alwaysOriginal), for: .normal)
         b.addTarget(self, action: #selector(handleOpeningProfile), for: .touchUpInside)
         return b
     }()
@@ -88,7 +91,7 @@ class HeaderView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
 }
 
 //MARK:- Handling communication with the View implementing the header view
@@ -114,10 +117,18 @@ extension HeaderView {
 extension HeaderView {
     
     func setImage(withUrl url: String) {
+        guard let imgUrl = URL(string: url) else { return }
         
-        guard let imgURL = URL(string: url) else { return }
-        SDWebImageManager.shared().loadImage(with: imgURL, options: .continueInBackground, progress: nil) { (img, _, _, _, _, _) in
-            self.profileImage.setImage(img?.withRenderingMode(.alwaysOriginal), for: .normal)
+        NetworkManager.shared.fetchProfileImage(url: imgUrl) { [unowned self] (image, error) in
+            DispatchQueue.main.async {
+                if let err = error {
+                    print(err.localizedDescription)
+                    return
+                }
+                if let img = image {
+                    self.profileImage.setImage(img.withRenderingMode(.alwaysOriginal), for: .normal)
+                }
+            }
         }
     }
     
