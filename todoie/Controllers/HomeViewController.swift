@@ -12,7 +12,7 @@ import Firebase
 class HomeViewController: UIViewController {
     
     // constants
-    fileprivate let homeVM = HomeViewViewModel()
+    fileprivate let homeVM = HomeViewModel()
     
     // vars
     fileprivate var user: TodoieUser?
@@ -26,8 +26,9 @@ class HomeViewController: UIViewController {
         s.hidesWhenStopped = true
         return s
     }()
-    // Creating a tableview that takes a TaskViewModel as the dataArray and a Cell that implements A taskViewModel
-    fileprivate lazy var tableView = TasksCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout(), delegate: self)
+    
+    // Creating a collectionView that takes a TaskViewModel as the dataArray and a Cell that implements A taskViewModel
+    fileprivate lazy var collectionView = TasksCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout(), delegate: self)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,15 +38,8 @@ class HomeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("user: ", Auth.auth().currentUser?.uid ?? "couldn't find user")
-        
-        if Auth.auth().currentUser == nil {
-            present(LoginViewController(), animated: true)
-        } else {
-            // fetches the HomeVC data
-            spinner.startAnimating()
-            homeVM.fetchHomeViewData()
-        }
+        spinner.startAnimating()
+        homeVM.fetchHomeViewData()
     }
 }
 
@@ -71,7 +65,7 @@ extension HomeViewController {
     func passData(tasksArray: [TaskViewModel]?) {
         spinner.stopAnimating()
         guard let tasks = tasksArray else { return }
-        tableView.dataArray = tasks
+        collectionView.dataArray = tasks
     }
 }
 
@@ -107,16 +101,16 @@ extension HomeViewController {
     // Setup the UI for the HomeViewController
     func setupUI(){
         // adds the BaseTableViewController as a child for the HomeController
-        addChild(tableView)
+        addChild(collectionView)
         // takes the view of the BaseTableViewController so we can add it as a subview
-        let tableVCView = tableView.view!
+        let collectionVCView = collectionView.view!
         let line = LineView()
         
         // insert views
         view.addSubview(line)
         view.addSubview(spinner)
         view.insertSubview(header, aboveSubview: line)
-        view.insertSubview(tableVCView, aboveSubview: line)
+        view.insertSubview(collectionVCView, aboveSubview: line)
         line.setupView(leadingAnchor: view.leadingAnchor)
         
         view.backgroundColor = .white
@@ -127,13 +121,13 @@ extension HomeViewController {
             header.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             header.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.44),
             
-            tableVCView.topAnchor.constraint(equalTo: header.bottomAnchor),
-            tableVCView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableVCView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableVCView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            collectionVCView.topAnchor.constraint(equalTo: header.bottomAnchor),
+            collectionVCView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionVCView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionVCView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
-            spinner.centerXAnchor.constraint(equalTo: tableVCView.centerXAnchor),
-            spinner.centerYAnchor.constraint(equalTo: tableVCView.centerYAnchor),
+            spinner.centerXAnchor.constraint(equalTo: collectionVCView.centerXAnchor),
+            spinner.centerYAnchor.constraint(equalTo: collectionVCView.centerYAnchor),
             
             line.topAnchor.constraint(equalTo: view.topAnchor),
             line.bottomAnchor.constraint(equalTo: view.bottomAnchor),

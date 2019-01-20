@@ -17,12 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
         // Setup firebase and facebook SDKs
         setupSDKs(application, launchOptions: launchOptions)
         window = UIWindow()
+        window?.rootViewController = BaseViewController()
         window?.makeKeyAndVisible()
-        window?.rootViewController = HomeViewController()
         return true
     }
     

@@ -1,5 +1,5 @@
 //
-//  HomeViewViewModel.swift
+//  HomeViewModel.swift
 //  todoie
 //
 //  Created by Mustafa Khalil on 1/15/19.
@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class HomeViewViewModel {
+class HomeViewModel {
     
     private let limit = 15
     

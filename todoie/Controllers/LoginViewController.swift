@@ -12,6 +12,9 @@ import FacebookLogin
 import GoogleSignIn
 import JGProgressHUD
 
+
+private let firsTimeOpeningApp = "firstTimeOpeningTheApp"
+
 class LoginViewController: UIViewController {
     
     // constants
@@ -65,6 +68,18 @@ class LoginViewController: UIViewController {
         setupView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if UserDefaults.standard.bool(forKey: firsTimeOpeningApp) == false {
+            DispatchQueue.main.async {
+                let welcomingScreenVC = WelcomingViewController()
+                self.present(welcomingScreenVC, animated: true) {
+                    UserDefaults.standard.set(true, forKey: firsTimeOpeningApp)
+                }
+            }
+        }
+    }
 }
 
 //MARK:- Google Auth
@@ -120,19 +135,15 @@ extension LoginViewController {
     func setupLoginViewModelObservers() {
         
         // Binds the clousre with the object isUserLoggedIn
-        loginViewModel.isUserLoggedIn.bind { [unowned self] (args) in
+        loginViewModel.isUserLoggedIn.bind { [weak self] (args) in
             guard let (isLoggedIn, error) = args else { return }
             
             // checkes for errors and pressents a hub with a error in it.
             if let err = error {
-                self.showErrorHud(err: err)
+                self?.showErrorHud(err: err)
                 return
             }
-            // dismisses and then if logged in shows the main view
-            self.progressHud.dismiss()
-            if isLoggedIn {
-                self.dismiss(animated: true)
-            }
+            self?.progressHud.dismiss()
         }
     }
 }
