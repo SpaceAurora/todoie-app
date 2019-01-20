@@ -67,6 +67,10 @@ extension AppDelegate {
     fileprivate func setupSDKs(_ application: UIApplication, launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         FirebaseApp.configure()
+        let db = Firestore.firestore()
+        let settings = db.settings
+        settings.areTimestampsInSnapshotsEnabled = true
+        db.settings = settings
     }
 }
 

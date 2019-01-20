@@ -63,7 +63,7 @@ class HeaderView: UIView {
         l.translatesAutoresizingMaskIntoConstraints = false
         l.text = "My Tasks"
         l.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        l.textColor = .black
+        l.textColor = .mainScreenTitles
         l.minimumScaleFactor = 0.7
         l.adjustsFontSizeToFitWidth = true
         return l
