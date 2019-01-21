@@ -16,7 +16,7 @@ enum Priority: Int {
         case .high:
             return .highPriority
         case .low:
-            return .lowPriority
+            return .blueTodoieColor
         case .medium:
             return .medPriority
         }

@@ -49,7 +49,7 @@ extension UIColor {
         }
     }
     
-    static var lowPriority: UIColor {
+    static var blueTodoieColor: UIColor {
         get {
             return .RGB(red: 74, green: 144, blue: 226)
         }
@@ -64,6 +64,31 @@ extension UIColor {
     static var highPriority: UIColor {
         get {
             return .RGB(red: 208, green: 2, blue: 27)
+        }
+    }
+    
+    static var todoieDustyBlue: UIColor {
+        get {
+            return .RGB(red: 109, green: 151, blue: 167)
+        }
+    }
+    
+    static var todoiePurple: UIColor {
+        get {
+            return .RGB(red: 163, green: 161, blue: 255)
+        }
+    }
+    
+    static var todoieLightGreen: UIColor {
+        get {
+            return .RGB(red: 165, green: 231, blue: 192)
+        }
+    }
+    
+    
+    static var todoiePink: UIColor {
+        get {
+            return .RGB(red: 201, green: 148, blue: 219)
         }
     }
     
