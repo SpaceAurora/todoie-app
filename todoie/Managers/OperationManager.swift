@@ -91,4 +91,17 @@ class OperationManager {
         }
         return fetchOperation
     }
+    
+    func saveUserTaskOperation(userId: String, data: Task, completion: @escaping (Bool, Error?) -> Void) -> SaveOperation<Task> {
+        
+        let saveOperation = SaveOperation<Task>(data: data, databaseRef: CollectionReference.saveTask(userUID: userId), urlWrapper: nil)
+        saveOperation.didSave = { (isUploaded, error) in
+            if let err = error {
+                completion(isUploaded, err)
+                return
+            }
+            completion(isUploaded, nil)
+        }
+        return saveOperation
+    }
 }

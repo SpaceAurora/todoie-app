@@ -16,8 +16,8 @@ class LoginSeparatorUIView: UIView {
         return lb
     }()
     
-    fileprivate let right = Separator()
-    fileprivate let left = Separator()
+    fileprivate let right = UISeparator()
+    fileprivate let left = UISeparator()
     
     
     override init(frame: CGRect) {
@@ -52,22 +52,4 @@ class LoginSeparatorUIView: UIView {
             ])
     }
     
-}
-
-//MARK:- Separator view
-
-fileprivate class Separator: UIView {
-    override var intrinsicContentSize: CGSize {
-        return .init(width: 0, height: 0.5)
-    }
-    
-    init() {
-        super.init(frame: .zero)
-        translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = .white
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 }

@@ -13,7 +13,7 @@ class HomeViewController: UIViewController {
     
     // constants
     fileprivate let homeVM = HomeViewModel()
-    
+    fileprivate weak var coordinatorDelegate: CoordinatorDelegate?
     // vars
     fileprivate var user: TodoieUser?
     
@@ -29,6 +29,15 @@ class HomeViewController: UIViewController {
     
     // Creating a collectionView that takes a TaskViewModel as the dataArray and a Cell that implements A taskViewModel
     fileprivate lazy var collectionView = TasksCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout(), delegate: self)
+    
+    init(delegate: CoordinatorDelegate) {
+        coordinatorDelegate = delegate
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,14 +92,17 @@ extension HomeViewController: HeaderViewProtocol {
     
     func addTask() {
         //TODO: implement buttons
+        coordinatorDelegate?.showAddTasksViewController(controller: self)
     }
     
     func searchTask() {
         //TODO: implement buttons
+        print("Searching for tasks")
     }
     
     func openProfile() {
         //TODO: implement buttons
+        print("Opening profile")
     }
 }
 
@@ -114,7 +126,6 @@ extension HomeViewController {
         line.setupView(leadingAnchor: view.leadingAnchor)
         
         view.backgroundColor = .white
-        
         NSLayoutConstraint.activate([
             header.topAnchor.constraint(equalTo: view.topAnchor),
             header.leadingAnchor.constraint(equalTo: view.leadingAnchor),

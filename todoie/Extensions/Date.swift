@@ -20,5 +20,34 @@ extension Date {
         let date = Calendar.current.date(byAdding: components, to: self.startOfDay)
         return (date?.addingTimeInterval(0))!
     }
+    
+    static var dateMonthYearFormat: String {
+        return "YYYY-dd-MM"
+    }
+    
+    static var timeFormat: String {
+        return "h:mm a"
+    }
+    
+    static var alertFormat: String {
+        return "E, MM/d/yyyy, h:mm a"
+    }
+    
+    static var serverDateFormat: String {
+        return "YYYY-dd-MM 'at' h:mm a"
+    }
+    
+    
+    func getDate(withFormat format: String) -> String {
+        var dateformatter = DateFormatter()
+        dateformatter.dateFormat = format
+        return dateformatter.string(from: self)
+    }
+    
+    static func getDateFromString(_ date: String, format: String) -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        return dateFormatter.date(from: date)
+    }
 }
 

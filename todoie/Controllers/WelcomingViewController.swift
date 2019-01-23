@@ -12,6 +12,7 @@ class WelcomingViewController: UIViewController {
     
     // ViewModel
     private let welcomingVM = WelcomingViewModel()
+    private weak var coordinatorDelegate: CoordinatorDelegate?
     
     private let cellID = "welcoming-cells"
     private var dataArray: [PageViewModel] = [] {
@@ -46,6 +47,15 @@ class WelcomingViewController: UIViewController {
     
     private let nextButton = createButtons(title: "Next")
     private let skipButton = createButtons(title: "Skip")
+    
+    init(delegate: CoordinatorDelegate) {
+        coordinatorDelegate = delegate
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,7 +95,7 @@ extension WelcomingViewController {
     }
     // Skip and Next Button function that handles the dismissal of the ViewController
     @objc func handleSkip() {
-        dismiss(animated: true)
+        coordinatorDelegate?.dismissFromMainView(controller: self)
     }
     
     // Handles the way the Next button reacts
