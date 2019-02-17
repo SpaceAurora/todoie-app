@@ -25,7 +25,14 @@ class AddTaskViewController: UIViewController {
     
     fileprivate let errorHUD: JGProgressHUD = {
         let j = JGProgressHUD(style: .dark)
+        j.indicatorView = JGProgressHUDErrorIndicatorView()
         j.textLabel.text = "Error saving"
+        return j
+    }()
+    
+    fileprivate let progressHUD: JGProgressHUD = {
+        let j = JGProgressHUD(style: .dark)
+        j.textLabel.text = "Saving..."
         return j
     }()
     
@@ -168,18 +175,19 @@ class AddTaskViewController: UIViewController {
     }
     
     func setupObservers() {
-        addViewModel.uploaded.bind { (isUploading) in
-            if isUploading == true {
-                self.handleDismiss()
-            } else {
-                self.saveButton.isEnabled = false
-            }
+        addViewModel.uploaded.bind { [weak self] (isUploading) in
+            self?.handleDismiss()
         }
-        addViewModel.error.bind { (isError) in
-            self.saveButton.isEnabled = isError ?? true
-            self.errorHUD.show(in: self.view, animated: true)
-            self.errorHUD.dismiss(afterDelay: 3, animated: true)
+        addViewModel.error.bind { [weak self] (isError) in
+            self?.showError(isError ?? true)
         }
+    }
+    
+    func showError(_ isError: Bool) {
+        self.progressHUD.dismiss(animated: true)
+        self.saveButton.isEnabled = isError
+        self.errorHUD.show(in: view, animated: true)
+        self.errorHUD.dismiss(afterDelay: 3, animated: true)
     }
 }
 
@@ -188,7 +196,13 @@ class AddTaskViewController: UIViewController {
 extension AddTaskViewController {
     
     @objc func handleDismiss() {
-        coordinatorDelegate?.dismissFromMainView(controller: self)
+        DispatchQueue.main.async {
+            self.progressHUD.indicatorView = JGProgressHUDSuccessIndicatorView()
+            self.progressHUD.detailTextLabel.text = nil
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+            self.coordinatorDelegate?.dismissFromMainView(controller: self)
+        }
     }
     
 }
@@ -235,6 +249,10 @@ extension AddTaskViewController: UITextFieldDelegate {
         view.endEditing(true)
     }
     
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        view.endEditing(true)
+    }
+    
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         return false
     }
@@ -246,6 +264,8 @@ extension AddTaskViewController: UITextFieldDelegate {
 extension AddTaskViewController: PriorityViewDelegate {
     
     @objc func handleSave() {
+        saveButton.isEnabled = false
+        progressHUD.show(in: view, animated: true)
         addViewModel.save()
     }
     
@@ -354,7 +374,7 @@ extension AddTaskViewController: UIScrollViewDelegate, RemindMeViewDelegate {
             alarmView.heightAnchor.constraint(equalToConstant: 40),
             timePickerHeightConstraint,
             
-            saveButton.bottomAnchor.constraint(equalTo: containerView.layoutMarginsGuide.bottomAnchor, constant: 16),
+            saveButton.bottomAnchor.constraint(equalTo: containerView.layoutMarginsGuide.bottomAnchor, constant: -16),
             saveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             ])
         

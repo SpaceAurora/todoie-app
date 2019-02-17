@@ -29,7 +29,7 @@ class AddTaskViewModel {
             
             if let err = error {
                 // Handle error
-                print(err)
+                print("error: ", err)
                 self.error.value = true
                 return
             }
