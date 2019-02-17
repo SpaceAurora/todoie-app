@@ -17,7 +17,7 @@ class HeaderView: UIView {
     // UIComponents
     private var path: UIBezierPath!
     private let shapeLayer = CAShapeLayer()
-    private let line: LineView = LineView()
+    private let line = LineView()
     
     private let backgroundImage: UIImageView = {
         let iv = UIImageView(image: #imageLiteral(resourceName: "b3"))
@@ -38,6 +38,7 @@ class HeaderView: UIView {
     private let addButton: HeaderButtons = {
         let b = HeaderButtons(type: .system)
         b.setupButton()
+        b.addTarget(self, action: #selector(handleAdd), for: .touchUpInside)
         b.setImage(#imageLiteral(resourceName: "plus").withRenderingMode(.alwaysOriginal), for: .normal)
         return b
     }()
@@ -45,6 +46,7 @@ class HeaderView: UIView {
     private let searchButton: HeaderButtons = {
         let b = HeaderButtons(type: .system)
         b.setupButton()
+        b.addTarget(self, action: #selector(handleSearch), for: .touchUpInside)
         b.setImage(#imageLiteral(resourceName: "search").withRenderingMode(.alwaysOriginal), for: .normal)
         return b
     }()
@@ -98,11 +100,11 @@ class HeaderView: UIView {
 
 extension HeaderView {
     
-    func handleAdd() {
+    @objc func handleAdd() {
         delegate?.addTask()
     }
     
-    func handleSearch() {
+    @objc func handleSearch() {
         delegate?.searchTask()
     }
     
@@ -139,6 +141,7 @@ extension HeaderView {
     
     // sets up the UI
     fileprivate func setupUI() {
+        backgroundColor = .white
         translatesAutoresizingMaskIntoConstraints = false
         addSubview(backgroundImage)
         layer.addSublayer(shapeLayer)

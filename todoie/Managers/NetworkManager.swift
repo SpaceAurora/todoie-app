@@ -128,4 +128,11 @@ extension NetworkManager {
         let operation = OperationManager.shared.fetchUserTasksOperation(query: query, completion: completion)
         operationQueue.addOperation(operation)
     }
+    
+    func saveTask(uid: String, task: Task, completion: @escaping (Bool, Error?) -> Void) {
+        let operation = OperationManager.shared.saveUserTaskOperation(userId: uid, data: task) { (isDone, error) in
+            completion(isDone, error)
+        }
+        operationQueue.addOperation(operation)
+    }
 }

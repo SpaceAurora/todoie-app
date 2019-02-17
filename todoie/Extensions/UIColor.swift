@@ -92,6 +92,12 @@ extension UIColor {
         }
     }
     
+    static var todoieLightSkyBlue: UIColor {
+        get {
+            return .RGB(red: 114, green: 169, blue: 234)
+        }
+    }
+    
     /**
      RGB Helper method
      - Parameters:

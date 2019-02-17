@@ -12,14 +12,11 @@ import FacebookLogin
 import GoogleSignIn
 import JGProgressHUD
 
-
-private let firsTimeOpeningApp = "firstTimeOpeningTheApp"
-
 class LoginViewController: UIViewController {
     
     // constants
     private let loginViewModel = LoginViewModel()
-    
+    private weak var coordinatorDelegate: CoordinatorDelegate?
     // UIComponents
     private let progressHud: JGProgressHUD = {
         let hud = JGProgressHUD(style: .dark)
@@ -60,6 +57,15 @@ class LoginViewController: UIViewController {
         return b
     }()
     
+    init(delegate: CoordinatorDelegate) {
+        coordinatorDelegate = delegate
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = true
@@ -70,15 +76,7 @@ class LoginViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        if UserDefaults.standard.bool(forKey: firsTimeOpeningApp) == false {
-            DispatchQueue.main.async {
-                let welcomingScreenVC = WelcomingViewController()
-                self.present(welcomingScreenVC, animated: true) {
-                    UserDefaults.standard.set(true, forKey: firsTimeOpeningApp)
-                }
-            }
-        }
+        coordinatorDelegate?.showWelcomingViewController(controller: self)
     }
 }
 

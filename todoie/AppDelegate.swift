@@ -15,12 +15,18 @@ import GoogleSignIn
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    var coordinator: Coordinator?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Setup firebase and facebook SDKs
+        
+        let viewController = UIViewController()
         setupSDKs(application, launchOptions: launchOptions)
+        
+        coordinator = Coordinator(viewController: viewController)
         window = UIWindow()
-        window?.rootViewController = BaseViewController()
+        coordinator?.start()
+        window?.rootViewController = viewController
         window?.makeKeyAndVisible()
         return true
     }
