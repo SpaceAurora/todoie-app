@@ -1,6 +1,0 @@
-framework module Pods_todoieUITests {
-  umbrella header "Pods-todoieUITests-umbrella.h"
-
-  export *
-  module * { export * }
-}
