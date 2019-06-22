@@ -41,7 +41,7 @@ class DownloadImagesOperation: Procedure {
         executing(true)
         
         // Checks if the image is in our cache, if not it downloads it
-        SDWebImageManager.shared().loadImage(with: url, options: .continueInBackground, progress: nil) { (img, _, err, _, _, _) in
+        SDWebImageManager.shared.loadImage(with: url, options: .continueInBackground, progress: nil) { (img, _, err, _, _, _) in
             self.finishOperation()
             self.didDownloadUserImage?(img, err)
             self.dataWrapper.data = img

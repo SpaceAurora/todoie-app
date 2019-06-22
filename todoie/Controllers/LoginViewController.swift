@@ -134,7 +134,7 @@ extension LoginViewController {
         
         // Binds the clousre with the object isUserLoggedIn
         loginViewModel.isUserLoggedIn.bind { [weak self] (args) in
-            guard let (isLoggedIn, error) = args else { return }
+            guard let (_, error) = args else { return }
             
             // checkes for errors and pressents a hub with a error in it.
             if let err = error {

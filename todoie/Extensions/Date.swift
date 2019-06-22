@@ -39,7 +39,7 @@ extension Date {
     
     
     func getDate(withFormat format: String) -> String {
-        var dateformatter = DateFormatter()
+        let dateformatter = DateFormatter()
         dateformatter.dateFormat = format
         return dateformatter.string(from: self)
     }
